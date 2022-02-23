@@ -102,7 +102,7 @@ namespace AssignmentFPTBook.Controllers
                     {
                         Session["Admin"] = data.FirstOrDefault().Username;
 
-                        return RedirectToAction("Index", "Admin");
+                        return RedirectToAction("Index", "AdminAccount");
                     }
                 }
                 else
