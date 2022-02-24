@@ -113,29 +113,29 @@ namespace AssignmentFPTBook.Controllers
             return View();
         }
 
-        //public ActionResult UpdateAccount()
-        //{
-        //    var user = Session["Username"];
-        //    Account objAccount = _db.Accounts.ToList().Find(a => a.Username.Equals(user));
-        //    if (objAccount == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(objAccount);
-        //}
+        public ActionResult UpdateAccount()
+        {
+            var user = Session["Username"];
+            Account objAccount = _db.Accounts.ToList().Find(a => a.Username.Equals(user));
+            if (objAccount == null)
+            {
+                return HttpNotFound();
+            }
+            return View(objAccount);
+        }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult UpdateAccount(Account _account)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _db.Entry(_account).State = System.Data.Entity.EntityState.Modified;
-        //        _db.SaveChanges(); ;
-        //        return RedirectToAction("Index", "Home");
-        //    }
-        //    return View(_account);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateAccount(Account _account)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(_account).State = System.Data.Entity.EntityState.Modified;
+                _db.SaveChanges(); ;
+                return RedirectToAction("Index", "Home");
+            }
+            return View(_account);
+        }
 
 
         public ActionResult Logout()

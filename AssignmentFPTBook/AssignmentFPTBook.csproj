@@ -138,6 +138,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\HtmlExtensions.cs" />
     <Compile Include="Migrations\202202240405525_InitialRun.cs" />
     <Compile Include="Migrations\202202240405525_InitialRun.designer.cs">
       <DependentUpon>202202240405525_InitialRun.cs</DependentUpon>
@@ -151,7 +152,6 @@
     <Compile Include="Models\FPTBookStoreDbContext.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +197,7 @@
     <Content Include="fonts\ionicons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\Cafecungtony2.jpg" />
     <Content Include="img\back2.jpg" />
     <Content Include="img\background.png" />
     <Content Include="img\bookLogo.png" />
@@ -293,7 +294,6 @@
     <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\AdminAccount\Index.cshtml" />
-    <Content Include="Views\Account\UpdateAccount.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Categories\Delete.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />
@@ -309,6 +309,9 @@
     <Content Include="Views\Books\Details.cshtml" />
     <Content Include="Views\Books\Edit.cshtml" />
     <Content Include="Views\Books\Index.cshtml" />
+    <Content Include="Views\Account\UpdateAccount.cshtml" />
+    <Content Include="Views\AdminAccount\ViewUserList.cshtml" />
+    <Content Include="Views\AdminAccount\DetailUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

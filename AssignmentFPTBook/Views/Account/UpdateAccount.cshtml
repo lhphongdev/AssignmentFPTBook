@@ -19,7 +19,7 @@
 
             <div class="form-group">
 
-                @Html.HiddenFor(u => u.Username, new { @class = "form-control form-control-lg", @readonly = "", @style = "margin-bottom: 5px;background: rgb(237,240,245);color: rgb(0,0,0);" })
+                @Html.TextBoxFor(u => u.Username, new { @class = "form-control form-control-lg", @readonly = "", @style = "margin-bottom: 5px;background: rgb(198,199,201);color: rgb(0,0,0);" })
                 @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
             </div>
 

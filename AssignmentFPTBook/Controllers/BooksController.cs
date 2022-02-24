@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -49,8 +50,20 @@ namespace AssignmentFPTBook.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BookID,BookName,CategoryID,AuthorID,Quantity,Price,Image,ShortDesc,DetailDesc")] Book book)
+        public ActionResult Create(Book book, HttpPostedFileBase image)
         {
+            if (image != null && image.ContentLength > 0)
+            {
+                //book.Image = new byte[image.ContentLength];
+                //image.InputStream.Read(book.Image, 0, image.ContentLength);
+                string fileName = Path.GetFileName(image.FileName);
+                string urlImage = Path.Combine(Server.MapPath("~/Image/"), fileName);
+                image.SaveAs(urlImage);
+
+                book.UrlImage = "~/Image/" + fileName;
+            }
+
+
             if (ModelState.IsValid)
             {
                 db.Books.Add(book);

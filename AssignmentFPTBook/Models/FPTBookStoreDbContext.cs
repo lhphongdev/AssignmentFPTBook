@@ -19,7 +19,6 @@ namespace AssignmentFPTBook.Models
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -72,10 +71,6 @@ namespace AssignmentFPTBook.Models
 
             modelBuilder.Entity<Book>()
                 .Property(e => e.AuthorID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Book>()
-                .Property(e => e.Image)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Book>()

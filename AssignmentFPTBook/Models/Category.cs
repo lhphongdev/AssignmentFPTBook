@@ -15,7 +15,6 @@ namespace AssignmentFPTBook.Models
             Books = new HashSet<Book>();
         }
 
-
         [Required]
         [StringLength(10)]
         [Display(Name = "Category ID")]

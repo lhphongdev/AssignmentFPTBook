@@ -1,0 +1,92 @@
+﻿@model AssignmentFPTBook.Models.Account
+
+@{
+    ViewBag.Title = "DetailUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<h2 class="text-center text-primary" style="font-weight: bold;">Details</h2>
+@using (Html.BeginForm("DetailUser", "AdminAccount", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <ul class="list-group" style="margin-left: 5%;margin-right: 5%;border-radius: 23px;">
+
+        <li class="list-group-item">
+            <div>
+                <label class="form-label" style="font-weight: bold;text-decoration:  underline;">@Html.DisplayNameFor(model => model.Username)</label>
+                <span style="margin-left: 5%;font-size: 19px;">@Html.DisplayFor(model => model.Username)</span>
+            </div>
+        </li>
+
+        <li class="list-group-item">
+            <div>
+                <label class="form-label" style="font-weight: bold;text-decoration:  underline;">@Html.DisplayNameFor(model => model.Fullname)</label>
+                <span style="margin-left: 5%;font-size: 19px;">@Html.DisplayFor(model => model.Fullname)</span>
+            </div>
+        </li>
+
+        <li class="list-group-item">
+            <div>
+                <label class="form-label" style="font-weight: bold;text-decoration:  underline;">@Html.DisplayNameFor(model => model.Email)</label>
+                <span style="margin-left: 5%;font-size: 19px;">@Html.DisplayFor(model => model.Email)</span>
+
+
+            </div>
+        </li>
+
+        <li class="list-group-item">
+            <div>
+                <label class="form-label" style="font-weight: bold;text-decoration:  underline;">@Html.DisplayNameFor(model => model.Phone)</label>
+                <span style="margin-left: 5%;font-size: 19px;">@Html.DisplayFor(model => model.Phone)</span>
+            </div>
+        </li>
+
+        <li class="list-group-item">
+            <div>
+                <label class="form-label" style="font-weight: bold;text-decoration:  underline;">@Html.DisplayNameFor(model => model.Address)</label>
+                <span style="margin-left: 5%;font-size: 19px;">@Html.DisplayFor(model => model.Address)</span>
+            </div>
+        </li>
+
+        <li class="list-group-item">
+            <div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "form-label", @style = "font-weight: bold;text-decoration:  underline;" })
+                            @if (Model.State == 1)
+                            {
+                                @Html.RadioButtonFor(model => model.State, "1", new { @checked = true, @style = "margin-left: 5%" })<span style="font-size: 19px;">Admin</span>
+                                @Html.RadioButtonFor(model => model.State, "0", new { @style = "margin-left: 5%" }) <span style="font-size: 19px;">User</span>
+                            }
+                            else
+                            {
+                                @Html.RadioButtonFor(model => model.State, "1", new { @style = "margin-left: 5%" })<span style="font-size: 19px;">Admin</span>
+                                @Html.RadioButtonFor(model => model.State, "0", new { @checked = true, @style = "margin-left: 5%" }) <span style="font-size: 19px;">User</span>
+                            }
+                            @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="list-group-item">
+            <div>
+                <button class="btn btn-primary btn-lg" type="submit" style="width: 180px;">Update Role</button>
+                @Html.ActionLink("Back", "ViewUserList", null, new { @class = "btn btn-danger btn-lg", @style = "margin-left: 2%; width: 120px; " })
+            </div>
+        </li>
+    </ul>
+}
+
+
+
+
+
+
