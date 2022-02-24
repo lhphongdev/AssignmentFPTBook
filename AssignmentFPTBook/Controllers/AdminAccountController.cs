@@ -11,7 +11,11 @@ namespace AssignmentFPTBook.Controllers
         // GET: AdminAccount
         public ActionResult Index()
         {
-            return View();
+            if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
+            {
+                return View();
+            }
+            return View("Error");
         }
     }
 }
