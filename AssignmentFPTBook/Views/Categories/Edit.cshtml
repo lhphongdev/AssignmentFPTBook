@@ -1,46 +1,58 @@
 ﻿@model AssignmentFPTBook.Models.Category
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Update category";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<div class="container-fluid">
+    <div class="row justify-content-center mb-3">
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow mb-3">
+                        <div class="card-header py-3">
+                            <p class="text-center text-primary m-0 fw-bold" style="font-size: 26px;"><strong>Update category</strong><br></p>
+                        </div>
+                        <div class="card-body">
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Category</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.CategoryID)
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            @Html.LabelFor(model => model.CategoryID, htmlAttributes: new { @class = "form-label" })
+                                            @Html.EditorFor(model => model.CategoryID, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                                            @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+                                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                                        <div class="mb-3">
+                                            @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "form-label" })
+                                            @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control", @required = "", @autofucus = "", @placeholder = "Enter category name" } })
+                                            @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+                                        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                                        <div class="mb-3">
+                                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
+                                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @required = "", @placeholder = "Enter description" } })
+                                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3" style="text-align: center;">
+                                    <button class="btn btn-primary btn-lg" type="submit" style="width: 124.875px;">Update</button>
+                                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-danger btn-lg", @style = "margin-left: 2%; width: 120px; " })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+
