@@ -24,7 +24,7 @@
                             <th style="text-align: center;">@Html.DisplayNameFor(model => model.Address)</th>
                             <th style="text-align: center;">@Html.DisplayNameFor(model => model.State)</th>
 
-                            <th style="text-align: center;">Detail</th>
+                            <th style="text-align: center;">Change account role</th>
 
                         </tr>
                     </thead>
@@ -46,11 +46,16 @@
                                 {
                                     <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">User</td>
                                 }
-
-                                <td style="text-align: center;">
-                                    <div>@Html.ActionLink(" ", "DetailUser", new { id = item.Username }, new { @class = "fas fa-info-circle", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
-                                </td>
-
+                                @if (item.Username.Equals("admin"))
+                                {
+                                    <td></td>
+                                }
+                                else
+                                {
+                                    <td style="text-align: center;">
+                                        <div>@Html.ActionLink(" ", "DetailUser", new { id = item.Username }, new { @class = "fas fa-info-circle", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
+                                    </td>
+                                }
                             </tr>
                         }
                     </tbody>

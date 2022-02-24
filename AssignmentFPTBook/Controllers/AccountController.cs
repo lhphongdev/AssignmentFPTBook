@@ -88,8 +88,6 @@ namespace AssignmentFPTBook.Controllers
                 var MD5Pass = PasswordMD5(password);
                 var data = _db.Accounts.Where(e => e.Username.Equals(username) && e.Password.Equals(MD5Pass)).ToList();
 
-
-
                 if (data.Count() > 0)
                 {
                     if (data.FirstOrDefault().State == 0)
@@ -116,6 +114,10 @@ namespace AssignmentFPTBook.Controllers
         public ActionResult UpdateAccount()
         {
             var user = Session["Username"];
+            if (user == null)
+            {
+                Response.Write("<script>alert('Please sign in to continue!'); window.location='/Account/SignIn'</script>");
+            }
             Account objAccount = _db.Accounts.ToList().Find(a => a.Username.Equals(user));
             if (objAccount == null)
             {
@@ -130,11 +132,41 @@ namespace AssignmentFPTBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Entry(_account).State = System.Data.Entity.EntityState.Modified;
-                _db.SaveChanges(); ;
-                return RedirectToAction("Index", "Home");
+                _db.Accounts.Attach(_account);
+
+                _db.Entry(_account).Property(a => a.Fullname).IsModified = true;
+                _db.Entry(_account).Property(a => a.Email).IsModified = true;
+                _db.Entry(_account).Property(a => a.Phone).IsModified = true;
+                _db.Entry(_account).Property(a => a.Address).IsModified = true;
+
+                _db.SaveChanges();
+
+                Response.Write("<script>alert('Update information success!');window.location='/';</script>");
+
             }
             return View(_account);
+        }
+
+        public ActionResult ChangePass()
+        {
+            var user = Session["Username"];
+            if (user == null)
+            {
+                Response.Write("<script>alert('Please sign in to continue!'); window.location='/Account/SignIn'</script>");
+            }
+            Account objAccount = _db.Accounts.ToList().Find(a => a.Username.Equals(user));
+            if (objAccount == null)
+            {
+                return HttpNotFound();
+            }
+            return View(objAccount);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePass(ChangePassword change, Account account)
+        {
+            return View(account);
         }
 
 

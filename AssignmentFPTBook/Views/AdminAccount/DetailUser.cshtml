@@ -5,84 +5,125 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.AuthorID, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.AuthorID, new { htmlAttributes = new { @class = "form-control", @autofocus = "", @required = "", @placeholder = "Enter author ID" } })
+                    @Html.ValidationMessageFor(model => model.AuthorID, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.AuthorName, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.AuthorName, new { htmlAttributes = new { @class = "form-control", @required = "", @placeholder = "Enter author name" } })
+                    @Html.ValidationMessageFor(model => model.AuthorName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @required = "", @placeholder = "Enter description" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3" style="text-align: center;">
+            <input type="submit" value="Create" class="btn btn-primary btn-lg" style="width: 124.875px;" />
+            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-danger btn-lg", @style = "margin-left: 2%; width: 120px; " })
+        </div>
+    }*@
+
 
 
 
 <h2 class="text-center text-primary" style="font-weight: bold;">Details</h2>
+
+
 @using (Html.BeginForm("DetailUser", "AdminAccount", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col">
+            <ul class="list-group" style="margin-left: 5%;margin-right: 5%;border-radius: 23px;">
 
-    <ul class="list-group" style="margin-left: 5%;margin-right: 5%;border-radius: 23px;">
+                <li class="list-group-item">
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "form-label", @style = "font-weight: bold;text-decoration:  underline;" })
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", @disabled = "" } })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    </div>
+                </li>
 
-        <li class="list-group-item">
-            <div>
-                <label class="form-label" style="font-weight: bold;text-decoration:  underline;">@Html.DisplayNameFor(model => model.Username)</label>
-                <span style="margin-left: 5%;font-size: 19px;">@Html.DisplayFor(model => model.Username)</span>
-            </div>
-        </li>
+                <li class="list-group-item">
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Fullname, htmlAttributes: new { @class = "form-label", @style = "font-weight: bold;text-decoration:  underline;" })
+                        @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { @class = "form-control", @disabled = "" } })
+                        @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
+                    </div>
+                </li>
 
-        <li class="list-group-item">
-            <div>
-                <label class="form-label" style="font-weight: bold;text-decoration:  underline;">@Html.DisplayNameFor(model => model.Fullname)</label>
-                <span style="margin-left: 5%;font-size: 19px;">@Html.DisplayFor(model => model.Fullname)</span>
-            </div>
-        </li>
+                <li class="list-group-item">
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label", @style = "font-weight: bold;text-decoration:  underline;" })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @disabled = "" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </li>
 
-        <li class="list-group-item">
-            <div>
-                <label class="form-label" style="font-weight: bold;text-decoration:  underline;">@Html.DisplayNameFor(model => model.Email)</label>
-                <span style="margin-left: 5%;font-size: 19px;">@Html.DisplayFor(model => model.Email)</span>
+                <li class="list-group-item">
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "form-label", @style = "font-weight: bold;text-decoration:  underline;" })
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @disabled = "" } })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                    </div>
+                </li>
 
+                <li class="list-group-item">
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "form-label", @style = "font-weight: bold;text-decoration:  underline;" })
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @disabled = "" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </li>
 
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div>
-                <label class="form-label" style="font-weight: bold;text-decoration:  underline;">@Html.DisplayNameFor(model => model.Phone)</label>
-                <span style="margin-left: 5%;font-size: 19px;">@Html.DisplayFor(model => model.Phone)</span>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div>
-                <label class="form-label" style="font-weight: bold;text-decoration:  underline;">@Html.DisplayNameFor(model => model.Address)</label>
-                <span style="margin-left: 5%;font-size: 19px;">@Html.DisplayFor(model => model.Address)</span>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div>
-                <div class="row">
-                    <div class="col">
-                        <div class="mb-3">
-                            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "form-label", @style = "font-weight: bold;text-decoration:  underline;" })
-                            @if (Model.State == 1)
-                            {
-                                @Html.RadioButtonFor(model => model.State, "1", new { @checked = true, @style = "margin-left: 5%" })<span style="font-size: 19px;">Admin</span>
-                                @Html.RadioButtonFor(model => model.State, "0", new { @style = "margin-left: 5%" }) <span style="font-size: 19px;">User</span>
-                            }
-                            else
-                            {
-                                @Html.RadioButtonFor(model => model.State, "1", new { @style = "margin-left: 5%" })<span style="font-size: 19px;">Admin</span>
-                                @Html.RadioButtonFor(model => model.State, "0", new { @checked = true, @style = "margin-left: 5%" }) <span style="font-size: 19px;">User</span>
-                            }
-                            @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                <li class="list-group-item">
+                    <div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "form-label", @style = "font-weight: bold;text-decoration:  underline;" })
+                                    @if (Model.State == 1)
+                                    {
+                                        @Html.RadioButtonFor(model => model.State, "1", new { @checked = true, @style = "margin-left: 5%" })<span style="font-size: 19px;">Admin</span>
+                                        @Html.RadioButtonFor(model => model.State, "0", new { @style = "margin-left: 5%" }) <span style="font-size: 19px;">User</span>
+                                    }
+                                    else
+                                    {
+                                        @Html.RadioButtonFor(model => model.State, "1", new { @style = "margin-left: 5%" })<span style="font-size: 19px;">Admin</span>
+                                        @Html.RadioButtonFor(model => model.State, "0", new { @checked = true, @style = "margin-left: 5%" }) <span style="font-size: 19px;">User</span>
+                                    }
+                                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </li>
+                </li>
 
-        <li class="list-group-item">
-            <div>
-                <button class="btn btn-primary btn-lg" type="submit" style="width: 180px;">Update Role</button>
-                @Html.ActionLink("Back", "ViewUserList", null, new { @class = "btn btn-danger btn-lg", @style = "margin-left: 2%; width: 120px; " })
-            </div>
-        </li>
-    </ul>
+                <li class="list-group-item">
+                    <div>
+                        <button class="btn btn-primary btn-lg" type="submit" style="width: 180px;">Update Role</button>
+                        @Html.ActionLink("Back", "ViewUserList", null, new { @class = "btn btn-danger btn-lg", @style = "margin-left: 2%; width: 120px; " })
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 }
 
 

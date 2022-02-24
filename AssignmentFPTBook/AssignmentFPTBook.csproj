@@ -148,6 +148,7 @@
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ChangePassword.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\FPTBookStoreDbContext.cs" />
     <Compile Include="Models\Order.cs" />
@@ -312,6 +313,7 @@
     <Content Include="Views\Account\UpdateAccount.cshtml" />
     <Content Include="Views\AdminAccount\ViewUserList.cshtml" />
     <Content Include="Views\AdminAccount\DetailUser.cshtml" />
+    <Content Include="Views\Account\ChangePass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

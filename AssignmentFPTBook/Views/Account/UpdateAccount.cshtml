@@ -12,7 +12,9 @@
 
         @using (Html.BeginForm("UpdateAccount", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @style = "background: rgb(235,224,224);" }))
         {
+
             @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             <h2 class="text-center">Update information</h2>
 
@@ -30,13 +32,6 @@
                 @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
             </div>
 
-            @*<div class="form-group">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.PasswordFor(u => u.Password, new { @class = "form-control form-control-lg", @placeholder = "Fullname", @autofocus = "", @required = "", @style = "margin-bottom: 5px;background: rgb(237,240,245);color: rgb(0,0,0);" })
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                </div>*@
-
-
             <div class="form-group">
 
                 @Html.TextBoxFor(u => u.Email, new { @class = "form-control form-control-lg", @placeholder = "Email", @required = "", @style = "margin-bottom: 5px;background: rgb(237,240,245);color: rgb(0,0,0);" })
@@ -45,7 +40,7 @@
 
 
             <div class="form-group">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
                 @Html.TextBoxFor(u => u.Phone, new { @class = "form-control form-control-lg", @placeholder = "Phone number", @required = "", @style = "margin-bottom: 5px;background: rgb(237,240,245);color: rgb(0,0,0);" })
                 @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
             </div>
@@ -59,7 +54,7 @@
 
 
             <input class="btn btn-primary" type="submit" value="Update" style="width: 109.2375px;margin-right: 13px;background: rgb(158,20,170);" />
-            <a class="btn btn-primary" role="button" style="width: 176.2375px;margin-right: 13px;" href="@Url.Action("ChangePass", "LoggedIn")">Change Password</a>
+            @Html.ActionLink("Change Password", "ChangePass", "Account", null, new { @class = "btn btn-primary", @style = "width: 176.2375px;margin-right: 13px;" })
             <a class="btn btn-primary" role="button" style="width: 109.2375px;background: rgb(251,0,52);" href="@Url.Action("Index", "Home")">Cancel</a>
 
         }
