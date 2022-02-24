@@ -14,35 +14,47 @@ namespace AssignmentFPTBook.Models
             OrderDetails = new HashSet<OrderDetail>();
         }
 
+        [Required]
         [StringLength(10)]
+        [Display(Name = "Book ID")]
         public string BookID { get; set; }
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Book name")]
         public string BookName { get; set; }
 
         [Required]
         [StringLength(10)]
+        [Display(Name = "Category ID")]
         public string CategoryID { get; set; }
 
         [Required]
         [StringLength(10)]
+        [Display(Name = "Author ID")]
         public string AuthorID { get; set; }
 
+        [Required]
+        [Display(Name = "Quantity")]
         public int Quantity { get; set; }
 
+        [Required]
+        [Display(Name = "Price")]
         public int Price { get; set; }
 
         [Required]
         [StringLength(500)]
+        [Display(Name = "Book Image")]
         public string Image { get; set; }
 
         [Required]
         [StringLength(200)]
+        [Display(Name = "Short Description")]
         public string ShortDesc { get; set; }
 
         [Required]
         [StringLength(500)]
+        [Display(Name = "Detail Description")]
         public string DetailDesc { get; set; }
 
         public virtual Author Author { get; set; }
