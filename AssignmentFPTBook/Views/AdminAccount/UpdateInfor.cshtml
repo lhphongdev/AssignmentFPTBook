@@ -4,6 +4,16 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+@if (ViewBag.aSuccess != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.aSuccess");
+        window.location = '/AdminAccount';
+    };
+    </script>
+}
+
 <div class="container-fluid">
     <h1 class="font-monospace text-capitalize text-center text-dark shadow-lg mb-4">Profile</h1>
     <div class="row justify-content-center mb-3">
@@ -36,7 +46,7 @@
                                             <strong>
                                                 @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label" })
                                             </strong>
-                                            @Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
+                                            @Html.TextBoxFor(u => u.Email, new { @class = "form-control", @placeholder = "Enter email address", @required = "" })
                                             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -48,7 +58,7 @@
                                             <strong>
                                                 @Html.LabelFor(model => model.Fullname, htmlAttributes: new { @class = "form-label" })
                                             </strong>
-                                            @Html.TextBoxFor(u => u.Fullname, new { @class = "form-control" })
+                                            @Html.TextBoxFor(u => u.Fullname, new { @class = "form-control", @placeholder = "Enter fullname", @required = "" })
                                             @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -57,7 +67,7 @@
                                             <strong>
                                                 @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "form-label" })
                                             </strong>
-                                            @Html.TextBoxFor(u => u.Phone, new { @class = "form-control" })
+                                            @Html.TextBoxFor(u => u.Phone, new { @class = "form-control", @placeholder = "Enter phone number", @required = "" })
                                             @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -66,7 +76,7 @@
                                             <strong>
                                                 @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "form-label" })
                                             </strong>
-                                            @Html.TextAreaFor(u => u.Address, new { @class = "form-control" })
+                                            @Html.TextAreaFor(u => u.Address, new { @class = "form-control", @placeholder = "Enter address", @required = "" })
                                             @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
 
                                         </div>
@@ -74,7 +84,8 @@
                                 </div>
                                 <div class="mb-3" style="text-align: center;">
                                     <button class="btn btn-primary" type="submit" style="width: 175.875px;">Update information</button>
-                                    <button class="btn btn-danger" type="button" style="margin-left: 22px;width: 109.5781px;">Cancel</button>
+
+                                    @Html.ActionLink("Cancel", "Index", "AdminAccount", null, new { @class = "btn btn-danger", @style = "margin-left: 22px;width: 109.5781px;" })
                                 </div>
                             }
 
@@ -86,27 +97,51 @@
                             <p class="text-center text-primary m-0 fw-bold"><strong>Password</strong><br></p>
                         </div>
                         <div class="card-body">
-                            <form>
+                            @using (Html.BeginForm("ChangePass", "AdminAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="mb-3">
-                                    <label class="form-label" for="address"><strong>Current Password</strong></label>
-                                    <input class="form-control" type="text" id="address" placeholder="Enter current password" name="currentPass" required="">
+
+                                    <strong>
+                                        @Html.LabelFor(model => model.CurrentPassword, htmlAttributes: new { @class = "form-label" })
+                                    </strong>
+
+                                    @Html.PasswordFor(u => u.CurrentPassword, new { @class = "form-control", @placeholder = "Enter current password", @required = "" })
+                                    @if (ViewBag.Error != null)
+                                    {
+                                        <p class="text-danger">@ViewBag.aError</p>
+                                    }
+
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label class="form-label" for="city"><strong>New Password</strong></label>
-                                            <input class="form-control" type="text" id="city" placeholder="Enter new password" name="newPass" required="">
+                                            <strong>
+                                                @Html.LabelFor(model => model.NewPassword, htmlAttributes: new { @class = "form-label" })
+                                            </strong>
+                                            @Html.PasswordFor(u => u.NewPassword, new { @class = "form-control", @placeholder = "Enter new password", @required = "" })
+                                            @Html.ValidationMessageFor(model => model.NewPassword, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label class="form-label" for="country"><strong>Confirm Password</strong></label>
-                                            <input class="form-control" type="text" id="country" placeholder="Enter confirm password" name="confirmPass" required="">
+                                            <strong>
+                                                @Html.LabelFor(model => model.ConfirmNewPassword, htmlAttributes: new { @class = "form-label" })
+                                            </strong>
+                                            @Html.PasswordFor(u => u.ConfirmNewPassword, new { @class = "form-control", @placeholder = "Confirm new password", @required = "" })
+                                            @if (ViewBag.Confirm != null)
+                                            {
+                                                <p class="text-danger">@ViewBag.aConfirm</p>
+                                            }
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mb-3" style="text-align: center;"><button class="btn btn-primary" type="submit" style="width: 172.875px;">Change Password</button><button class="btn btn-danger" type="button" style="margin-left: 22px;width: 109.5781px;">Cancel</button></div>
-                            </form>
+                                <div class="mb-3" style="text-align: center;">
+                                    <button class="btn btn-primary" type="submit" style="width: 172.875px;">Change Password</button>
+                                    @Html.ActionLink("Cancel", "Index", "AdminAccount", null, new { @class = "btn btn-danger", @style = "margin-left: 22px;width: 109.5781px;" })
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

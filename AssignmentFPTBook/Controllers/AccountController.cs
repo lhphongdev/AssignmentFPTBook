@@ -114,6 +114,7 @@ namespace AssignmentFPTBook.Controllers
         public ActionResult UpdateAccount()
         {
             var user = Session["Username"];
+
             if (user == null)
             {
                 Response.Write("<script>alert('Please sign in to continue!'); window.location='/Account/SignIn'</script>");
@@ -161,10 +162,7 @@ namespace AssignmentFPTBook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChangePass(Account account)
         {
-
-
             var user = Session["Username"];
-
 
             Account objAccount = _db.Accounts.ToList().Find(p => p.Username.Equals(user) && p.Password.Equals(PasswordMD5(account.CurrentPassword)));
             if (objAccount == null)
@@ -188,11 +186,9 @@ namespace AssignmentFPTBook.Controllers
                 _db.SaveChanges();
 
                 ViewBag.Success = "Password Change successfully";
-
             }
             return View();
         }
-
 
         public ActionResult Logout()
         {

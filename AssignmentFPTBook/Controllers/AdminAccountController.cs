@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -62,6 +64,39 @@ namespace AssignmentFPTBook.Controllers
             return View(account);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePass(Account account)
+        {
+            var user = Session["Admin"];
+
+            Account objAccount = db.Accounts.ToList().Find(p => p.Username.Equals(user) && p.Password.Equals(PasswordMD5(account.CurrentPassword)));
+            if (objAccount == null)
+            {
+
+                ViewBag.aError = "Current Password is incorrect";
+                return View();
+            }
+            if (account.NewPassword != account.ConfirmNewPassword)
+            {
+                ViewBag.aConfirm = "The new password and confirmation new password do not match.";
+            }
+
+            else
+            {
+                objAccount.Password = PasswordMD5(account.NewPassword);
+                objAccount.ConfirmPassword = objAccount.Password;
+
+                db.Accounts.Attach(objAccount);
+                db.Entry(objAccount).Property(a => a.Password).IsModified = true;
+                db.SaveChanges();
+
+                ViewBag.aSuccess = "Password Change successfully";
+            }
+            return View("UpdateInfor");
+        }
+
+
         public ActionResult ViewUserList()
         {
             if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
@@ -104,6 +139,22 @@ namespace AssignmentFPTBook.Controllers
                 return RedirectToAction("ViewUserList");
             }
             return View(account);
+        }
+
+        public static string PasswordMD5(string str)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] fromData = Encoding.UTF8.GetBytes(str);
+            byte[] targetData = md5.ComputeHash(fromData);
+            string byte2String = null;
+
+            for (int i = 0; i < targetData.Length; i++)
+            {
+                byte2String += targetData[i].ToString("x2");
+
+            }
+
+            return byte2String;
         }
     }
 }
