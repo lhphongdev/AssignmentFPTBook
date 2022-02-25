@@ -1,0 +1,117 @@
+﻿@model AssignmentFPTBook.Models.Account
+@{
+    ViewBag.Title = "Admin profile";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="font-monospace text-capitalize text-center text-dark shadow-lg mb-4">Profile</h1>
+    <div class="row justify-content-center mb-3">
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow mb-3">
+                        <div class="card-header py-3">
+                            <p class="text-center text-primary m-0 fw-bold"><strong>Information&nbsp;Account</strong><br></p>
+                        </div>
+                        <div class="card-body">
+                            @using (Html.BeginForm("UpdateInfor", "AdminAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <strong>
+                                                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "form-label" })
+                                            </strong>
+                                            @Html.TextBoxFor(u => u.Username, new { @class = "form-control", @readonly = "" })
+                                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <strong>
+                                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label" })
+                                            </strong>
+                                            @Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <strong>
+                                                @Html.LabelFor(model => model.Fullname, htmlAttributes: new { @class = "form-label" })
+                                            </strong>
+                                            @Html.TextBoxFor(u => u.Fullname, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <strong>
+                                                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "form-label" })
+                                            </strong>
+                                            @Html.TextBoxFor(u => u.Phone, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-12">
+                                        <div class="mb-3">
+                                            <strong>
+                                                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "form-label" })
+                                            </strong>
+                                            @Html.TextAreaFor(u => u.Address, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3" style="text-align: center;">
+                                    <button class="btn btn-primary" type="submit" style="width: 175.875px;">Update information</button>
+                                    <button class="btn btn-danger" type="button" style="margin-left: 22px;width: 109.5781px;">Cancel</button>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-center text-primary m-0 fw-bold"><strong>Password</strong><br></p>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label" for="address"><strong>Current Password</strong></label>
+                                    <input class="form-control" type="text" id="address" placeholder="Enter current password" name="currentPass" required="">
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="city"><strong>New Password</strong></label>
+                                            <input class="form-control" type="text" id="city" placeholder="Enter new password" name="newPass" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="country"><strong>Confirm Password</strong></label>
+                                            <input class="form-control" type="text" id="country" placeholder="Enter confirm password" name="confirmPass" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3" style="text-align: center;"><button class="btn btn-primary" type="submit" style="width: 172.875px;">Change Password</button><button class="btn btn-danger" type="button" style="margin-left: 22px;width: 109.5781px;">Cancel</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

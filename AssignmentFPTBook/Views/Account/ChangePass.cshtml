@@ -1,5 +1,6 @@
 ﻿@model AssignmentFPTBook.Models.ChangePassword
 
+
 @{
     ViewBag.Title = "ChangePass";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,20 +21,17 @@
 
 
             <div class="form-group">
-
                 @Html.TextBoxFor(u => u.OldPassword, new { @class = "form-control form-control-lg", @readonly = "", @style = "margin-bottom: 5px;background: rgb(198,199,201);color: rgb(0,0,0);" })
                 @Html.ValidationMessageFor(model => model.OldPassword, "", new { @class = "text-danger" })
             </div>
 
 
             <div class="form-group">
-
                 @Html.TextBoxFor(u => u.NewPassword, new { @class = "form-control form-control-lg", @placeholder = "Fullname", @autofocus = "", @required = "", @style = "margin-bottom: 5px;background: rgb(237,240,245);color: rgb(0,0,0);" })
                 @Html.ValidationMessageFor(model => model.NewPassword, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
-
                 @Html.TextBoxFor(u => u.ConfirmPassword, new { @class = "form-control form-control-lg", @placeholder = "Email", @required = "", @style = "margin-bottom: 5px;background: rgb(237,240,245);color: rgb(0,0,0);" })
                 @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
             </div>

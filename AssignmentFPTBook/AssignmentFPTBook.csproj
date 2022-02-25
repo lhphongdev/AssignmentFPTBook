@@ -314,6 +314,7 @@
     <Content Include="Views\AdminAccount\ViewUserList.cshtml" />
     <Content Include="Views\AdminAccount\DetailUser.cshtml" />
     <Content Include="Views\Account\ChangePass.cshtml" />
+    <Content Include="Views\AdminAccount\UpdateInfor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

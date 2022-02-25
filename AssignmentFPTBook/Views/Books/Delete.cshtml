@@ -53,11 +53,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Image)
+            @Html.DisplayNameFor(model => model.UrlImage)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Image)
+            @Html.DisplayFor(model => model.UrlImage)
         </dd>
 
         <dt>
@@ -78,7 +78,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

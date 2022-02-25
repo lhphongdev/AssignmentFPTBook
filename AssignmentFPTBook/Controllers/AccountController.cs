@@ -24,7 +24,6 @@ namespace AssignmentFPTBook.Controllers
             return View();
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SignUp(Account _account)
@@ -162,12 +161,12 @@ namespace AssignmentFPTBook.Controllers
             return View(objAccount);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ChangePass(ChangePassword change, Account account)
-        {
-            return View(account);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult ChangePass(ChangePassword change, Account account)
+        //{
+
+        //}
 
 
         public ActionResult Logout()
@@ -188,6 +187,7 @@ namespace AssignmentFPTBook.Controllers
                 byte2String += targetData[i].ToString("x2");
 
             }
+
             return byte2String;
         }
     }
