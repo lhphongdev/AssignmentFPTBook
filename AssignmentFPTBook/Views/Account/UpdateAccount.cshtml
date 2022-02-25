@@ -7,7 +7,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+@if (ViewBag.Success != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.Success");
+    };
+    </script>
+}
 
 <section class="register-photo" style="margin-top: 55px;">
     <div class="form-container">
