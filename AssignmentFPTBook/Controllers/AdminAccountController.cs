@@ -18,7 +18,7 @@ namespace AssignmentFPTBook.Controllers
         // GET: AdminAccount
         public ActionResult Index()
         {
-            if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
+            if (Session["Admin"] != null)
             {
                 return View();
             }
@@ -28,9 +28,9 @@ namespace AssignmentFPTBook.Controllers
         public ActionResult UpdateInfor()
         {
             var admin = Session["Admin"];
-            var user = Session["Username"];
 
-            if (admin == null || user != null)
+
+            if (admin == null)
             {
                 return View("Error");
             }
@@ -99,7 +99,7 @@ namespace AssignmentFPTBook.Controllers
 
         public ActionResult ViewUserList()
         {
-            if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
+            if (Session["Admin"] != null)
             {
                 return View(db.Accounts.ToList().OrderByDescending(a => a.State));
             }
@@ -108,7 +108,7 @@ namespace AssignmentFPTBook.Controllers
 
         public ActionResult DetailUser(string id)
         {
-            if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
+            if (Session["Admin"] != null)
             {
                 if (id == null)
                 {
@@ -153,7 +153,6 @@ namespace AssignmentFPTBook.Controllers
                 byte2String += targetData[i].ToString("x2");
 
             }
-
             return byte2String;
         }
     }

@@ -17,7 +17,7 @@ namespace AssignmentFPTBook.Controllers
         // GET: Categories
         public ActionResult Index()
         {
-            if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
+            if (Session["Admin"] != null)
             {
                 return View(db.Categories.ToList().OrderBy(c => c.CategoryID));
             }
@@ -27,7 +27,7 @@ namespace AssignmentFPTBook.Controllers
         // GET: Categories/Details/5
         public ActionResult Details(string id)
         {
-            if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
+            if (Session["Admin"] != null)
             {
                 if (id == null)
                 {
@@ -46,7 +46,7 @@ namespace AssignmentFPTBook.Controllers
         // GET: Categories/Create
         public ActionResult Create()
         {
-            if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
+            if (Session["Admin"] != null)
             {
                 return View();
             }
@@ -73,7 +73,7 @@ namespace AssignmentFPTBook.Controllers
         // GET: Categories/Edit/5
         public ActionResult Edit(string id)
         {
-            if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
+            if (Session["Admin"] != null)
             {
                 if (id == null)
                 {
@@ -109,7 +109,7 @@ namespace AssignmentFPTBook.Controllers
         // GET: Categories/Delete/5
         public ActionResult Delete(string id)
         {
-            if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
+            if (Session["Admin"] != null)
             {
                 if (id == null)
                 {

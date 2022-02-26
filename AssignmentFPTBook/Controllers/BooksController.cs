@@ -18,31 +18,43 @@ namespace AssignmentFPTBook.Controllers
         // GET: Books
         public ActionResult Index()
         {
-            var books = db.Books.Include(b => b.Author).Include(b => b.Category);
-            return View(books.ToList());
+            if (Session["Admin"] != null)
+            {
+                var books = db.Books.Include(b => b.Author).Include(b => b.Category);
+                return View(books.ToList());
+            }
+            return View("Error");
         }
 
         // GET: Books/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
+            if (Session["Admin"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Book book = db.Books.Find(id);
+                if (book == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(book);
             }
-            Book book = db.Books.Find(id);
-            if (book == null)
-            {
-                return HttpNotFound();
-            }
-            return View(book);
+            return View("Error");
         }
 
         // GET: Books/Create
         public ActionResult Create()
         {
-            ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName");
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
-            return View();
+            if (Session["Admin"] != null)
+            {
+                ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName");
+                ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
+                return View();
+            }
+            return View("Error");
         }
 
         // POST: Books/Create
@@ -79,18 +91,22 @@ namespace AssignmentFPTBook.Controllers
         // GET: Books/Edit/5
         public ActionResult Edit(string id)
         {
-            if (id == null)
+            if (Session["Admin"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Book book = db.Books.Find(id);
+                if (book == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
+                ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", book.CategoryID);
+                return View(book);
             }
-            Book book = db.Books.Find(id);
-            if (book == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", book.CategoryID);
-            return View(book);
+            return View("Error");
         }
 
         // POST: Books/Edit/5
@@ -114,16 +130,20 @@ namespace AssignmentFPTBook.Controllers
         // GET: Books/Delete/5
         public ActionResult Delete(string id)
         {
-            if (id == null)
+            if (Session["Admin"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Book book = db.Books.Find(id);
+                if (book == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(book);
             }
-            Book book = db.Books.Find(id);
-            if (book == null)
-            {
-                return HttpNotFound();
-            }
-            return View(book);
+            return View("Error");
         }
 
         // POST: Books/Delete/5

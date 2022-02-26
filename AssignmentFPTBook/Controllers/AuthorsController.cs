@@ -17,7 +17,7 @@ namespace AssignmentFPTBook.Controllers
         // GET: Authors
         public ActionResult Index()
         {
-            if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
+            if (Session["Admin"] != null)
             {
                 return View(db.Authors.ToList().OrderBy(a => a.AuthorID));
             }
@@ -28,7 +28,7 @@ namespace AssignmentFPTBook.Controllers
         // GET: Authors/Details/5
         public ActionResult Details(string id)
         {
-            if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
+            if (Session["Admin"] != null)
             {
                 if (id == null)
                 {
@@ -49,7 +49,7 @@ namespace AssignmentFPTBook.Controllers
         // GET: Authors/Create
         public ActionResult Create()
         {
-            if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
+            if (Session["Admin"] != null)
             {
                 return View();
             }
@@ -77,7 +77,7 @@ namespace AssignmentFPTBook.Controllers
         public ActionResult Edit(string id)
         {
 
-            if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
+            if (Session["Admin"] != null)
             {
                 if (id == null)
                 {
@@ -114,7 +114,7 @@ namespace AssignmentFPTBook.Controllers
         public ActionResult Delete(string id)
         {
 
-            if (Session["UserName"] == Session["UserName"] && Session["Admin"] != null)
+            if (Session["Admin"] != null)
             {
                 if (id == null)
                 {
