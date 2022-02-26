@@ -25,7 +25,7 @@ namespace AssignmentFPTBook.Controllers
 
         }
 
-        // GET: Authors/Details/5
+        // GET: Authors/Details/AuthorID
         public ActionResult Details(string id)
         {
             if (Session["Admin"] != null)
@@ -56,9 +56,7 @@ namespace AssignmentFPTBook.Controllers
             return View("Error");
         }
 
-        // POST: Authors/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Authors/Create        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "AuthorID,AuthorName,Description")] Author author)
@@ -73,10 +71,9 @@ namespace AssignmentFPTBook.Controllers
             return View(author);
         }
 
-        // GET: Authors/Edit/5
+        // GET: Authors/Edit/AuthorID
         public ActionResult Edit(string id)
         {
-
             if (Session["Admin"] != null)
             {
                 if (id == null)
@@ -94,9 +91,7 @@ namespace AssignmentFPTBook.Controllers
 
         }
 
-        // POST: Authors/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Authors/Edit/AuthorID
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "AuthorID,AuthorName,Description")] Author author)
@@ -110,10 +105,9 @@ namespace AssignmentFPTBook.Controllers
             return View(author);
         }
 
-        // GET: Authors/Delete/5
+        // GET: Authors/Delete/AuthorID
         public ActionResult Delete(string id)
         {
-
             if (Session["Admin"] != null)
             {
                 if (id == null)
@@ -131,7 +125,7 @@ namespace AssignmentFPTBook.Controllers
 
         }
 
-        // POST: Authors/Delete/5
+        // POST: Authors/Delete/AuthorID
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

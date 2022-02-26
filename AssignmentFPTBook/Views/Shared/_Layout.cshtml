@@ -39,7 +39,20 @@
                             <a class="dropdown-item" href="@Url.Action("Category","Home")"> Category 1</a>
                             <a class="dropdown-item" href="@Url.Action("Category","Home")"> Category 2</a>
                             <a class="dropdown-item" href="@Url.Action("Category","Home")"> Category 3</a>
+
                         </div>
+
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" data-bss-hover-animate="pulse" href="#">Author</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="@Url.Action("Category","Home")"> Author 1</a>
+                            <a class="dropdown-item" href="@Url.Action("Category","Home")"> Author 2</a>
+                            <a class="dropdown-item" href="@Url.Action("Category","Home")"> Author 3</a>
+
+                        </div>
+
                     </li>
                 </ul>
 
@@ -48,7 +61,7 @@
                 <ul class="navbar-nav">
                     @if (Session["Username"] != null)
                     {
-                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="@Url.Action("SendFeedback", "LoggedIn")">Send feedback</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="@Url.Action("SendFeedback", "Account")">Send feedback</a></li>
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="@Url.Action("Cart", "LoggedIn")">Cart (0)</a></li>
 
                         <li class="nav-item" data-bss-hover-animate="pulse">@Html.ActionLink("Hello, " + Session["Username"], "UpdateAccount", "Account", null, new { @class = "nav-link" })</li>
@@ -81,9 +94,7 @@
                     <h3>Quick links</h3>
                     <ul>
                         <li><a href="@Url.Action("Index","Home")">Home</a></li>
-                        <li><a href="@Url.Action("Category","Home")">Category 1</a></li>
-                        <li><a href="@Url.Action("Category","Home")">Category 2</a></li>
-                        <li><a href="@Url.Action("Category","Home")">Category 3</a></li>
+
 
                     </ul>
                 </div>

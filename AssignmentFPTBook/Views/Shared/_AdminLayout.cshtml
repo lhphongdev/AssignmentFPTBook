@@ -25,7 +25,7 @@
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: rgb(0,0,0);font-family: Aclonica, sans-serif;transform: perspective(0px);">
             <div class="container-fluid d-flex flex-column p-0">
-                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="index.html" style="transform: perspective(0px);filter: blur(0px) brightness(200%) contrast(200%) saturate(200%);font-family: 'Abril Fatface', serif;">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="@Url.Action("Index","AdminAccount")" style="transform: perspective(0px);filter: blur(0px) brightness(200%) contrast(200%) saturate(200%);font-family: 'Abril Fatface', serif;">
                     <div class="sidebar-brand-icon rotate-n-15"></div>
                     <div class="sidebar-brand-text mx-3"><span style="color: rgb(200,247,12);font-size: 20px;text-align: center;font-family: 'Akaya Telivigala', serif;font-weight: bold;border-color: rgb(204,255,0);">FPT Book - Admin</span></div>
                 </a>
@@ -33,6 +33,7 @@
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "AdminAccount")"><i class="fas fa-home"></i><span>Home</span></a>
                         <a class="nav-link" href="@Url.Action("Index", "Categories")"><i class="fas fa-th-list"></i><span>Category Management</span></a>
 
                         <a class="nav-link" href="@Url.Action("Index", "Authors")">
@@ -53,13 +54,12 @@
                         <a class="nav-link" href="@Url.Action("ViewUserList", "AdminAccount")"><i class="fas fa-user-alt"></i><span>User Management</span></a>
 
 
-                        @Html.ActionLink("  Profile", "UpdateInfor", "AdminAccount", null, new { @class = "far fa-user-circle nav-link", @style = "margin-top:70%;font-size:18px;font-weight:bold" })
+                        @Html.ActionLink("  Profile", "UpdateInfor", "AdminAccount", null, new { @class = "far fa-user-circle nav-link", @style = "margin-top:50%;font-size:18px;font-weight:bold" })
                         <a class="nav-link" href="@Url.Action("Logout","Account")"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
                     </li>
-                    <li class="nav-item"></li>
-                    <li class="nav-item"></li>
+
                 </ul>
-                <div class="text-center d-none d-md-inline"></div>
+
             </div>
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">
@@ -68,20 +68,17 @@
                     <div class="container-fluid">
                         <button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <ul class="navbar-nav flex-nowrap ms-auto">
-
-
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow">
                                     <b class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
                                         <span class="d-none d-lg-inline me-2 text-gray-600 small" style="color: rgb(93,244,1);">
-                                            Hello Administrator
+                                            Hello, @Session["AdminName"]
                                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person-circle" style="font-size: 29px;margin-left: 6px;color: rgb(200,248,6);">
                                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
                                                 <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"></path>
                                             </svg>
                                         </span>
                                     </b>
-
                                 </div>
                             </li>
                         </ul>

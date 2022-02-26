@@ -18,7 +18,7 @@
     </script>
 }
 
-<section class="register-photo" style="margin-top: 55px;">
+<section class="register-photo" style="margin-top: 55px; background-image: url('https://i.imgur.com/3RZzmca.jpg'); background-size: 100% ">
     <div class="form-container">
 
         @using (Html.BeginForm("ChangePass", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @style = "background: rgb(235,224,224);" }))
@@ -59,7 +59,7 @@
 
             <input class="btn btn-primary" type="submit" value="Update" style="width: 109.2375px;margin-right: 13px;background: rgb(158,20,170);" />
 
-            <a class="btn btn-primary" role="button" style="width: 109.2375px;background: rgb(251,0,52);" href="@Url.Action("Index", "Home")">Cancel</a>
+            <a class="btn btn-primary" role="button" style="width: 109.2375px;background: rgb(251,0,52);" href="@Url.Action("UpdateAccount", "Account")">Cancel</a>
 
         }
     </div>

@@ -26,7 +26,7 @@ namespace AssignmentFPTBook.Controllers
             return View("Error");
         }
 
-        // GET: Books/Details/5
+        // GET: Books/Details/BookID
         public ActionResult Details(string id)
         {
             if (Session["Admin"] != null)
@@ -58,8 +58,6 @@ namespace AssignmentFPTBook.Controllers
         }
 
         // POST: Books/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Book book, HttpPostedFileBase image)
@@ -88,7 +86,7 @@ namespace AssignmentFPTBook.Controllers
             return View(book);
         }
 
-        // GET: Books/Edit/5
+        // GET: Books/Edit/BookID
         public ActionResult Edit(string id)
         {
             if (Session["Admin"] != null)
@@ -109,9 +107,7 @@ namespace AssignmentFPTBook.Controllers
             return View("Error");
         }
 
-        // POST: Books/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Books/Edit/BookID
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "BookID,BookName,CategoryID,AuthorID,Quantity,Price,Image,ShortDesc,DetailDesc")] Book book)
@@ -127,7 +123,7 @@ namespace AssignmentFPTBook.Controllers
             return View(book);
         }
 
-        // GET: Books/Delete/5
+        // GET: Books/Delete/BookID
         public ActionResult Delete(string id)
         {
             if (Session["Admin"] != null)
@@ -146,7 +142,7 @@ namespace AssignmentFPTBook.Controllers
             return View("Error");
         }
 
-        // POST: Books/Delete/5
+        // POST: Books/Delete/BookID
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

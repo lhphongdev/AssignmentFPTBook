@@ -29,7 +29,6 @@ namespace AssignmentFPTBook.Controllers
         {
             var admin = Session["Admin"];
 
-
             if (admin == null)
             {
                 return View("Error");
@@ -73,7 +72,6 @@ namespace AssignmentFPTBook.Controllers
             Account objAccount = db.Accounts.ToList().Find(p => p.Username.Equals(user) && p.Password.Equals(PasswordMD5(account.CurrentPassword)));
             if (objAccount == null)
             {
-
                 ViewBag.aError = "Current Password is incorrect";
                 return View();
             }
@@ -95,7 +93,6 @@ namespace AssignmentFPTBook.Controllers
             }
             return View("UpdateInfor");
         }
-
 
         public ActionResult ViewUserList()
         {
@@ -134,7 +131,6 @@ namespace AssignmentFPTBook.Controllers
                 db.Entry(account).Property(e => e.State).IsModified = true;
 
                 db.SaveChanges();
-
 
                 return RedirectToAction("ViewUserList");
             }

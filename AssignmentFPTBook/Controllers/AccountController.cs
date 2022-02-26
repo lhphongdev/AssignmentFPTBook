@@ -14,12 +14,6 @@ namespace AssignmentFPTBook.Controllers
     {
         private FPTBookStoreDbContext _db = new FPTBookStoreDbContext();
 
-        // GET: Account
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult SignUp()
         {
             return View();
@@ -31,8 +25,6 @@ namespace AssignmentFPTBook.Controllers
         {
             if (ModelState.IsValid)
             {
-
-
                 var usernameCheckExists = _db.Accounts.FirstOrDefault(u => u.Username == _account.Username);
                 var emailCheckExists = _db.Accounts.FirstOrDefault(e => e.Email == _account.Email);
                 var phoneCheckExists = _db.Accounts.FirstOrDefault(p => p.Phone == _account.Phone);
@@ -99,6 +91,7 @@ namespace AssignmentFPTBook.Controllers
                     else
                     {
                         Session["Admin"] = data.FirstOrDefault().Username;
+                        Session["AdminName"] = data.FirstOrDefault().Fullname;
 
                         return RedirectToAction("Index", "AdminAccount");
                     }
@@ -143,7 +136,6 @@ namespace AssignmentFPTBook.Controllers
                 _db.SaveChanges();
 
                 Response.Write("<script>alert('Update information success!');window.location='/';</script>");
-
             }
             return View(_account);
         }
@@ -167,7 +159,6 @@ namespace AssignmentFPTBook.Controllers
             Account objAccount = _db.Accounts.ToList().Find(p => p.Username.Equals(user) && p.Password.Equals(PasswordMD5(account.CurrentPassword)));
             if (objAccount == null)
             {
-
                 ViewBag.Error = "Current Password is incorrect";
                 return View();
             }
@@ -194,6 +185,34 @@ namespace AssignmentFPTBook.Controllers
         {
             Session.Clear();//remove session
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult SendFeedback()
+        {
+            var user = Session["Username"];
+            if (user == null)
+            {
+                Response.Write("<script>alert('Please sign in to continue!'); window.location='/Account/SignIn'</script>");
+            }
+
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SendFeedback(Feedback feedback)
+        {
+            if (ModelState.IsValid)
+            {
+
+
+                _db.Feedbacks.Add(feedback);
+                _db.SaveChanges();
+
+                ViewBag.Feedback = "Thanks for your feedback.";
+            }
+            return View();
         }
 
         public static string PasswordMD5(string str)

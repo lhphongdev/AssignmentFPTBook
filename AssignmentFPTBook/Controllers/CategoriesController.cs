@@ -24,7 +24,7 @@ namespace AssignmentFPTBook.Controllers
             return View("Error");
         }
 
-        // GET: Categories/Details/5
+        // GET: Categories/Details/CategoryID
         public ActionResult Details(string id)
         {
             if (Session["Admin"] != null)
@@ -54,8 +54,6 @@ namespace AssignmentFPTBook.Controllers
         }
 
         // POST: Categories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CategoryID,CategoryName,Description")] Category category)
@@ -70,7 +68,7 @@ namespace AssignmentFPTBook.Controllers
             return View(category);
         }
 
-        // GET: Categories/Edit/5
+        // GET: Categories/Edit/CategoryID
         public ActionResult Edit(string id)
         {
             if (Session["Admin"] != null)
@@ -90,9 +88,7 @@ namespace AssignmentFPTBook.Controllers
 
         }
 
-        // POST: Categories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Categories/Edit/CategoryID
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CategoryID,CategoryName,Description")] Category category)
@@ -106,7 +102,7 @@ namespace AssignmentFPTBook.Controllers
             return View(category);
         }
 
-        // GET: Categories/Delete/5
+        // GET: Categories/Delete/CategoryID
         public ActionResult Delete(string id)
         {
             if (Session["Admin"] != null)
@@ -125,7 +121,7 @@ namespace AssignmentFPTBook.Controllers
             return View("Error");
         }
 
-        // POST: Categories/Delete/5
+        // POST: Categories/Delete/CategoryID
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

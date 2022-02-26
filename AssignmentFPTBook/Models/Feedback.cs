@@ -16,6 +16,7 @@ namespace AssignmentFPTBook.Models
         [Key]
         [Column(Order = 1)]
         [StringLength(400)]
+        [Display(Name = "Content Feedback")]
         public string ContentFeedback { get; set; }
 
         public virtual Account Account { get; set; }
