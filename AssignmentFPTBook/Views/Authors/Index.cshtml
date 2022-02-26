@@ -20,7 +20,7 @@
                         <tr>
                             <th style="width: 241.4px;text-align: center;">@Html.DisplayNameFor(model => model.AuthorID)</th>
                             <th style="text-align: center;">@Html.DisplayNameFor(model => model.AuthorName)</th>
-                            <th style="text-align: center;">@Html.DisplayNameFor(model => model.Description)</th>
+
                             <th style="text-align: center;">Detail</th>
                             <th style="text-align: center;">Edit</th>
                             <th style="text-align: center;">Delete</th>
@@ -32,7 +32,7 @@
                             <tr>
                                 <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@Html.DisplayFor(modelItem => item.AuthorID)</td>
                                 <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@Html.DisplayFor(modelItem => item.AuthorName)</td>
-                                <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@Html.DisplayFor(modelItem => item.Description)</td>
+
 
                                 <td style="text-align: center;">
                                     <div>@Html.ActionLink(" ", "Details", new { id = item.AuthorID }, new { @class = "fas fa-info-circle", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>

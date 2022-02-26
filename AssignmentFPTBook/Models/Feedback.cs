@@ -21,7 +21,7 @@ namespace AssignmentFPTBook.Models
 
 
         [StringLength(30)]
-        [Display(Name = "Date Sended")]
+        [Display(Name = "Sent Date")]
         public string DateSend { get; set; }
 
         public virtual Account Account { get; set; }

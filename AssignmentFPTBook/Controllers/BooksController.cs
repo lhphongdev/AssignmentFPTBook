@@ -60,26 +60,37 @@ namespace AssignmentFPTBook.Controllers
         // POST: Books/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Book book, HttpPostedFileBase image)
+        public ActionResult Create(HttpPostedFileBase image, Book book)
         {
-            if (image != null && image.ContentLength > 0)
-            {
-                //book.Image = new byte[image.ContentLength];
-                //image.InputStream.Read(book.Image, 0, image.ContentLength);
-                string fileName = Path.GetFileName(image.FileName);
-                string urlImage = Path.Combine(Server.MapPath("~/Image/"), fileName);
-                image.SaveAs(urlImage);
-
-                book.UrlImage = "~/Image/" + fileName;
-            }
 
 
             if (ModelState.IsValid)
             {
-                db.Books.Add(book);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (image != null && image.ContentLength > 0)
+                {
+                    //book.Image = new byte[image.ContentLength];
+                    //image.InputStream.Read(book.Image, 0, image.ContentLength);
+
+                    string pic = Path.GetFileName(image.FileName);
+                    string path = Path.Combine(Server.MapPath("~/assets/img/Books"), pic);
+                    image.SaveAs(path);
+
+                    book.UrlImage = pic;
+                    db.Books.Add(book);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.Error = "............";
+                    return View();
+                }
             }
+
+
+
+
 
             ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", book.CategoryID);
