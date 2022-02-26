@@ -194,8 +194,6 @@ namespace AssignmentFPTBook.Controllers
             {
                 Response.Write("<script>alert('Please sign in to continue!'); window.location='/Account/SignIn'</script>");
             }
-
-
             return View();
         }
 
@@ -205,8 +203,6 @@ namespace AssignmentFPTBook.Controllers
         {
             if (ModelState.IsValid)
             {
-
-
                 _db.Feedbacks.Add(feedback);
                 _db.SaveChanges();
 

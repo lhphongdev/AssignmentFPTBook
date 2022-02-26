@@ -19,6 +19,11 @@ namespace AssignmentFPTBook.Models
         [Display(Name = "Content Feedback")]
         public string ContentFeedback { get; set; }
 
+
+        [StringLength(30)]
+        [Display(Name = "Date Sended")]
+        public string DateSend { get; set; }
+
         public virtual Account Account { get; set; }
     }
 }

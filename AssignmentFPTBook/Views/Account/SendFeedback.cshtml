@@ -32,6 +32,14 @@
                 @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
             </div>
 
+
+            <div class="form-group">
+
+                @Html.HiddenFor(u => u.DateSend, new { @class = "form-control form-control-lg", @Value = DateTime.Now, @readonly = "", @style = "background: rgb(198,199,201);" })
+                @Html.ValidationMessageFor(model => model.DateSend, "", new { @class = "text-danger" })
+            </div>
+
+
             <div class="form-group">
                 <strong>@Html.LabelFor(model => model.ContentFeedback, htmlAttributes: new { @class = "form-label", @style = "font-size:20px" })</strong>
 

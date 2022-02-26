@@ -319,6 +319,7 @@
     <Content Include="Views\Account\ChangePass.cshtml" />
     <Content Include="Views\AdminAccount\UpdateInfor.cshtml" />
     <Content Include="Views\Account\SendFeedback.cshtml" />
+    <Content Include="Views\AdminAccount\FeedbackView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -137,6 +137,25 @@ namespace AssignmentFPTBook.Controllers
             return View(account);
         }
 
+        public ActionResult FeedbackView()
+        {
+            if (Session["Admin"] != null)
+            {
+                return View(db.Feedbacks.ToList().OrderBy(o => o.DateSend));
+            }
+            return View("Error");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(string id, string name)
+        {
+            Feedback feedback = db.Feedbacks.FirstOrDefault(a => a.Username == id && a.ContentFeedback == name);
+            db.Feedbacks.Remove(feedback);
+            db.SaveChanges();
+            return RedirectToAction("Index", "AdminAccount");
+        }
+
         public static string PasswordMD5(string str)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
