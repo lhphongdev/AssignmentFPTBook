@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using AssignmentFPTBook.Models
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -36,12 +38,19 @@
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" data-bss-hover-animate="pulse" href="#">Category</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="@Url.Action("Category","Home")"> Category 1</a>
-                            <a class="dropdown-item" href="@Url.Action("Category","Home")"> Category 2</a>
-                            <a class="dropdown-item" href="@Url.Action("Category","Home")"> Category 3</a>
+                            <a class="dropdown-item" href="@Url.Action("CategoryView","Home", new {id = "Ca01"})">Novel</a>
+                            <a class="dropdown-item" href="@Url.Action("CategoryView","Home", new {id = "Ca02"})">Comic</a>
+                            <a class="dropdown-item" href="@Url.Action("CategoryView","Home", new {id = "Ca03"})">Magazine</a>
+                            <a class="dropdown-item" href="@Url.Action("CategoryView","Home", new {id = "Ca04"})">Autobiography</a>
+                            <a class="dropdown-item" href="@Url.Action("CategoryView","Home", new {id = "Ca05"})">Thriller</a>
+                            <a class="dropdown-item" href="@Url.Action("CategoryView","Home", new {id = "Ca06"})">Short story</a>
+                            <a class="dropdown-item" href="@Url.Action("CategoryView","Home", new {id = "Ca07"})">Nonfiction</a>
+                            <a class="dropdown-item" href="@Url.Action("CategoryView","Home", new {id = "Ca08"})">Romance</a>
+                            <a class="dropdown-item" href="@Url.Action("CategoryView","Home", new {id = "Ca09"})">Action and Adventure</a>
+                            <a class="dropdown-item" href="@Url.Action("CategoryView","Home", new {id = "Ca10"})">Horror</a>
+
 
                         </div>
-
                     </li>
 
                     <li class="nav-item dropdown">
@@ -50,7 +59,6 @@
                             <a class="dropdown-item" href="@Url.Action("Category","Home")"> Author 1</a>
                             <a class="dropdown-item" href="@Url.Action("Category","Home")"> Author 2</a>
                             <a class="dropdown-item" href="@Url.Action("Category","Home")"> Author 3</a>
-
                         </div>
 
                     </li>

@@ -1,0 +1,29 @@
+﻿@*@model IEnumerable<AssignmentFPTBook.Models.Book>
+
+    @{
+        ViewBag.Title = "CategoryView";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+
+    <section class="bg-light" id="portfolio">
+        <h1 style="font-size: 25px;text-align: center;margin-bottom: 28px;">Category view</h1>
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-6 col-md-4 col-lg-2 offset-xxl-6 portfolio-item">
+                        <a class="portfolio-link" href="@Url.Action("BookDetail", "Home", new { id = item.BookID})">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fa fa-file-picture-o fa-3x"></i></div>
+                            </div><img class="img-fluid" src="~/Image/@item.UrlImage">
+                        </a>
+                        <div class="portfolio-caption">
+                            <h4>Threads</h4>
+                            <p class="text-muted">@item.Price</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>*@

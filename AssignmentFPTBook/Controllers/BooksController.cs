@@ -62,8 +62,6 @@ namespace AssignmentFPTBook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(HttpPostedFileBase image, Book book)
         {
-
-
             if (ModelState.IsValid)
             {
                 if (image != null && image.ContentLength > 0)
@@ -72,7 +70,7 @@ namespace AssignmentFPTBook.Controllers
                     //image.InputStream.Read(book.Image, 0, image.ContentLength);
 
                     string pic = Path.GetFileName(image.FileName);
-                    string path = Path.Combine(Server.MapPath("~/assets/img/Books"), pic);
+                    string path = Path.Combine(Server.MapPath("~/Image/"), pic);
                     image.SaveAs(path);
 
                     book.UrlImage = pic;
@@ -87,11 +85,6 @@ namespace AssignmentFPTBook.Controllers
                     return View();
                 }
             }
-
-
-
-
-
             ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", book.CategoryID);
             return View(book);
@@ -121,7 +114,7 @@ namespace AssignmentFPTBook.Controllers
         // POST: Books/Edit/BookID
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BookID,BookName,CategoryID,AuthorID,Quantity,Price,Image,ShortDesc,DetailDesc")] Book book)
+        public ActionResult Edit(Book book)
         {
             if (ModelState.IsValid)
             {

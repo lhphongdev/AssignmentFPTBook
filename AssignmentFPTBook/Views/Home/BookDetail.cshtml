@@ -1,0 +1,32 @@
+﻿@model AssignmentFPTBook.Models.Book
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="projects-horizontal" style="padding-top: 4%;padding-bottom: 0px;">
+    <div class="container" style="margin-bottom: 5%;">
+        <div class="row justify-content-center projects" style="margin-right: 0px;margin-left: 0px;padding-bottom: 0px;margin-top: 0px;">
+            <div class="col-sm-6 col-xxl-9 item" style="padding-top: 61px;">
+                <div class="row">
+
+                    <div class="col-md-12 col-lg-5">
+                        <img class="img-fluid pulse animated infinite" src="~/Image/@Model.UrlImage">
+                    </div>
+                    <div class="col bounce animated">
+                        <h3 class="name" style="font-size: 30px;text-align: left;margin-left: 3%;">@Model.BookName</h3>
+                        <ul style="font-size: 20px;margin-left: 7px;">
+                            <li>Author: @Model.Author.AuthorName</li>
+                            <li>Category: @Model.Category.CategoryName</li>
+                            <li class="text-break">Description: @Model.DetailDesc</li>
+                        </ul>
+                        <h4 style="margin-left: 3%;">Price:&nbsp;<strong style="font-size: 35px;">@Model.Price $</strong></h4><button class="btn btn-success" type="button" style="margin-left: 6%;margin-top: 3%;width: 163.562px;height: 44px;"><i class="fas fa-shopping-cart"></i>&nbsp; &nbsp;Add to cart</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

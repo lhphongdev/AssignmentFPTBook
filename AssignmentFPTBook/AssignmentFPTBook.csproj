@@ -334,6 +334,9 @@
     <Content Include="Views\Account\SendFeedback.cshtml" />
     <Content Include="Views\AdminAccount\FeedbackView.cshtml" />
     <Content Include="Views\AdminAccount\Delete.cshtml" />
+    <Content Include="Views\Home\BookDetail.cshtml" />
+    <Content Include="Views\Home\CategoryView.cshtml" />
+    <Content Include="Views\Home\AuthorView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
