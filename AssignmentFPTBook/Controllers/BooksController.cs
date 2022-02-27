@@ -66,9 +66,6 @@ namespace AssignmentFPTBook.Controllers
             {
                 if (image != null && image.ContentLength > 0)
                 {
-                    //book.Image = new byte[image.ContentLength];
-                    //image.InputStream.Read(book.Image, 0, image.ContentLength);
-
                     string pic = Path.GetFileName(image.FileName);
                     string path = Path.Combine(Server.MapPath("~/Image/"), pic);
                     image.SaveAs(path);
@@ -100,6 +97,7 @@ namespace AssignmentFPTBook.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
                 Book book = db.Books.Find(id);
+                Session["imgPath"] = "~/Image/" + book.UrlImage;
                 if (book == null)
                 {
                     return HttpNotFound();
@@ -114,13 +112,27 @@ namespace AssignmentFPTBook.Controllers
         // POST: Books/Edit/BookID
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Book book)
+        public ActionResult Edit(HttpPostedFileBase image, Book book)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(book).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (image != null && image.ContentLength > 0)
+                {
+                    string pic = Path.GetFileName(image.FileName);
+                    string path = Path.Combine(Server.MapPath("~/Image/"), pic);
+                    string oldPath = Request.MapPath(Session["imgPath"].ToString());
+                    image.SaveAs(path);
+
+                    book.UrlImage = pic;
+
+                    db.Entry(book).State = EntityState.Modified;
+                    if (System.IO.File.Exists(oldPath))
+                    {
+                        System.IO.File.Delete(oldPath);
+                    }
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", book.CategoryID);
@@ -137,6 +149,7 @@ namespace AssignmentFPTBook.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
                 Book book = db.Books.Find(id);
+                Session["imgOldPath"] = "~/Image/" + book.UrlImage;
                 if (book == null)
                 {
                     return HttpNotFound();
@@ -151,8 +164,14 @@ namespace AssignmentFPTBook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
+            string oldPath = Request.MapPath(Session["imgOldPath"].ToString());
+
             Book book = db.Books.Find(id);
             db.Books.Remove(book);
+            if (System.IO.File.Exists(oldPath))
+            {
+                System.IO.File.Delete(oldPath);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }
