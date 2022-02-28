@@ -133,6 +133,14 @@ namespace AssignmentFPTBook.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
+                else
+                {
+                    db.Books.Attach(book);
+
+                    db.Entry(book).Property(a => a.BookName).IsModified = true;
+                    db.Entry(book).Property(a => a.AuthorID).IsModified = true;
+                    db.Entry(book).Property(a => a.BookName).IsModified = true;
+                }
             }
             ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", book.CategoryID);
