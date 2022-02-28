@@ -23,6 +23,38 @@
     <link href="~/fonts/ionicons.min.css" rel="stylesheet" />
     <link href="~/fonts/fontawesome5-overrides.min.css" rel="stylesheet" />
 
+
+    <style>
+        .hovertext {
+            position: relative;
+            border-bottom: 1px dotted black;
+        }
+
+            .hovertext:before {
+                content: attr(data-hover);
+                visibility: hidden;
+                opacity: 0;
+                width: 100%;
+                background-color: #ffe100;
+                color: black;
+                text-align: center;
+                font-weight: bold;
+                word-break: break-all;
+                border-radius: 5px;
+                padding: 5px 0;
+                transition: opacity 1s ease-in-out;
+                position: absolute;
+                z-index: 1;
+                left: 0;
+                top: 110%;
+            }
+
+            .hovertext:hover:before {
+                opacity: 1;
+                visibility: visible;
+            }
+    </style>
+
 </head>
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav" style="background: #001100; padding-top: 3px; padding-bottom: 5px;">

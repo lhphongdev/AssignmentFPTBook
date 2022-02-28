@@ -1,0 +1,73 @@
+﻿
+@model AssignmentFPTBook.Models.Cart
+
+
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null)
+{
+    <h1 class="text-center" style="margin-top: 5%;text-align: center;font-size: 32px;">Cart</h1>
+    <div class="table-responsive text-center" style="margin-top: 30px;margin-bottom: 21px;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+
+                    <th style="background: #d9d3d3;">Image</th>
+                    <th class="text-center" style="background: #d9d3d3;">Book name</th>
+                    <th class="text-center" style="background: #d9d3d3;">Price</th>
+                    <th style="background: #e7bcbc;">Quantity</th>
+                    <th style="background: #c8aeae;">Sum</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    double total = item._shopping_product.Price * item._shopping_quantity;
+
+                    <tr>
+                        <td>
+                            <div>
+                                <a href="#">
+                                    <i class="fa fa-remove" style="color: rgb(3,3,3);font-size: 19px;"></i>
+                                </a>
+                            </div>
+                        </td>
+
+                        <td><img src="~/Image/@Url.Content(item._shopping_product.UrlImage)" style="width: 70px;height: 80px;"></td>
+
+                        <td class="text-center">@Html.DisplayFor(model => item._shopping_product.BookName)</td>
+
+                        <td class="text-center">@Html.DisplayFor(model => item._shopping_product.Price)</td>
+
+                        <td>
+                            @using (Html.BeginForm("UpdateQuantity", "ShoppingCart"))
+                            {
+                                <div style="width: 108.6px;">
+                                    <input type="hidden" value="@item._shopping_product.BookID" name="ID_Product" />
+                                    <input type="number" style="width: 90px;" value="@item._shopping_quantity" name="Quantity" />
+                                </div>
+
+                                <div style="width: 108.6px;">
+                                    <input type="submit" class="btn btn-primary" style="margin-top: 10px;background: rgb(149,129,61);" />
+                                </div>
+                            }
+                        </td>
+                        <td>@total</td>
+                    </tr>
+                }
+
+                <tr>
+                    <td colspan="5" style="font-size: 26px;text-align: right;font-weight: bold;">Total:</td>
+                    <td colspan="1" style="font-weight: bold;font-size: 23px;">80000</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+}

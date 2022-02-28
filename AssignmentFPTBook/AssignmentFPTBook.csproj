@@ -141,6 +141,7 @@
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -153,6 +154,7 @@
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\FPTBookStoreDbContext.cs" />
@@ -216,28 +218,9 @@
     <Content Include="img\back2.jpg" />
     <Content Include="img\background.png" />
     <Content Include="img\bookLogo.png" />
+    <Content Include="img\cart button.jpg" />
     <Content Include="img\FPT Books %281%29.gif" />
     <Content Include="img\logo.png" />
-    <Content Include="img\products\Cafe cung tony - 2 .png" />
-    <Content Include="img\products\Cafe cung Tony.png" />
-    <Content Include="img\products\Carl Sagan.png" />
-    <Content Include="img\products\Dac nhan tam.png" />
-    <Content Include="img\products\Dracula.png" />
-    <Content Include="img\products\Herman Melville.png" />
-    <Content Include="img\products\James and the giant peach.png" />
-    <Content Include="img\products\Jane Eyre.png" />
-    <Content Include="img\products\Life of Pi.png" />
-    <Content Include="img\products\Luoc su van vat.png" />
-    <Content Include="img\products\Moby Pick.png" />
-    <Content Include="img\products\No-No Boy.png" />
-    <Content Include="img\products\The Alchemist.png" />
-    <Content Include="img\products\The Catcher in the Rye.png" />
-    <Content Include="img\products\The color Purple.png" />
-    <Content Include="img\products\The forever war.png" />
-    <Content Include="img\products\The Godfather.png" />
-    <Content Include="img\products\To kill a mocking bird.png" />
-    <Content Include="img\products\Winne the pooh.png" />
-    <Content Include="img\products\Zen the art of moto.png" />
     <Content Include="Scripts\agency.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -337,6 +320,7 @@
     <Content Include="Views\Home\BookDetail.cshtml" />
     <Content Include="Views\Home\CategoryView.cshtml" />
     <Content Include="Views\Home\AuthorView.cshtml" />
+    <Content Include="Views\ShoppingCart\ShowToCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
