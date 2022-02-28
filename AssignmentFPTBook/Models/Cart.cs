@@ -45,5 +45,27 @@ namespace AssignmentFPTBook.Models
                 item._shopping_quantity = _quantity;
             }
         }
+
+        public double TotalPrice()
+        {
+            var total = items.Sum(s => s._shopping_product.Price * s._shopping_quantity);
+
+            return total;
+        }
+
+        public int TotalQuantity()
+        {
+            return items.Sum(s => s._shopping_quantity);
+        }
+
+        public void DeleteCart(string id)
+        {
+            items.RemoveAll(s => s._shopping_product.BookID == id);
+        }
+
+        public void ClearCart()
+        {
+            items.Clear();
+        }
     }
 }

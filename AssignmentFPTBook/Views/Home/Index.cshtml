@@ -13,6 +13,15 @@
     </script>
 }
 
+@if (ViewBag.Null != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.Null");
+        window.location = "/";
+    };
+    </script>
+}
 
 
 <header class="masthead" style="background-image: url('../../img/background.png'); ">

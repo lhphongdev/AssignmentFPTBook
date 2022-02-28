@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AssignmentFPTBook.Models;
@@ -42,13 +43,34 @@ namespace AssignmentFPTBook.Controllers
             return RedirectToAction("ShowToCart", "ShoppingCart");
         }
 
+        public ActionResult Delete(string id)
+        {
+            Cart cart = Session["Cart"] as Cart;
+            cart.DeleteCart(id);
+            return RedirectToAction("ShowToCart", "ShoppingCart");
+        }
+
         public ActionResult ShowToCart()
         {
             if (Session["Cart"] == null)
-                return RedirectToAction("ShowToCart", "ShoppingCart");
+            {
+                Response.Write("<script>alert('Cart is empty');window.location='/'</script>");
+            }
             Cart cart = Session["Cart"] as Cart;
             return View(cart);
+        }
 
+        public PartialViewResult BagCart()
+        {
+            int total_item = 0;
+
+            Cart cart = Session["Cart"] as Cart;
+
+            if (cart != null)
+                total_item = cart.TotalQuantity();
+            ViewBag.TotalItem = total_item;
+
+            return PartialView("BagCart");
         }
 
     }

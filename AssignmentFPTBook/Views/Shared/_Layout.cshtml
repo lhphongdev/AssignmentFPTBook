@@ -1,4 +1,4 @@
-﻿@using AssignmentFPTBook.Models
+﻿
 
 <!DOCTYPE html>
 <html>
@@ -102,13 +102,17 @@
                     @if (Session["Username"] != null)
                     {
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="@Url.Action("SendFeedback", "Account")">Send feedback</a></li>
-                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="@Url.Action("Cart", "LoggedIn")">Cart (0)</a></li>
+
+                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="@Url.Action("ShowToCart", "ShoppingCart")">Cart (@Html.Action("BagCart", "ShoppingCart"))</a></li>
+
+
 
                         <li class="nav-item" data-bss-hover-animate="pulse">@Html.ActionLink("Hello, " + Session["Username"], "UpdateAccount", "Account", null, new { @class = "nav-link" })</li>
                         <li class="nav-item" data-bss-hover-animate="pulse">@Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "nav-link" })</li>
                     }
                     else
                     {
+                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="@Url.Action("ShowToCart", "ShoppingCart")">Cart (@Html.Action("BagCart", "ShoppingCart"))</a></li>
                         <li class="nav-item" data-bss-hover-animate="tada">@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
                         <li class="nav-item" data-bss-hover-animate="tada">@Html.ActionLink("Sign up", "SignUp", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
                     }
@@ -175,12 +179,12 @@
             z-index: 99;
             border: none;
             outline: none;
-            background-color: #ffffff;
+            background-color: black;
             color: white;
-            cursor: pointer;
-            padding: 15px;
+            cursor:context-menu;
+            padding: 7px;
             border-radius: 10px;
-            font-size: 20px; ">
+            font-size: 30px; ">
         🔝
     </button>
 
