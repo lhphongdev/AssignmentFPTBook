@@ -17,23 +17,31 @@ namespace AssignmentFPTBook.Controllers
         // GET: Orders
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.Account);
-            return View(orders.ToList());
+            if (Session["Admin"] != null)
+            {
+                var orders = db.Orders.Include(o => o.Account);
+                return View(orders.ToList());
+            }
+            return View("Error");
         }
 
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (Session["Admin"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Order order = db.Orders.Find(id);
+                if (order == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(order);
             }
-            Order order = db.Orders.Find(id);
-            if (order == null)
-            {
-                return HttpNotFound();
-            }
-            return View(order);
+            return View("Error");
         }
 
         protected override void Dispose(bool disposing)
