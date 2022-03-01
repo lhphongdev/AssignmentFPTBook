@@ -113,6 +113,7 @@
                 <ul class="navbar-nav">
                     @if (Session["Username"] != null)
                     {
+                        <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="@Url.Action("OrderHistory", "ShoppingCart", new {id=Session["Username"]})">Order history</a></li>
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="@Url.Action("SendFeedback", "Account")">Send feedback</a></li>
 
                         <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="@Url.Action("ShowToCart", "ShoppingCart")">Cart (@Html.Action("BagCart", "ShoppingCart"))</a></li>

@@ -1,0 +1,57 @@
+﻿@model AssignmentFPTBook.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="card shadow" style="box-shadow: 0px 0px;">
+        <div class="card-header py-3">
+            <p class="text-center text-primary m-0 fw-bold" style="font-size: 24px;">Orders Detail</p>
+            @Html.ActionLink("Back", "Index", "Orders", null, new { @class = "btn btn-danger", @style = "width: 172.6875px;margin-left: 43%;margin-bottom: 2%;" })
+            <ul class="list-group">
+                <li class="list-group-item"><span><b>Name:</b> <span style="font-size:23px">@Model.Account.Fullname</span></span></li>
+                <li class="list-group-item"><span><b>Delivery address:</b> <span style="font-size:23px">@Model.Address</span></span></li>
+                <li class="list-group-item"><span><b>Phone number:</b> <span style="font-size:23px">@Model.Phone</span></span></li>
+                <li class="list-group-item"><span><b>Order date:</b> <span style="font-size:23px">@Model.OrderDate</span></span></li>
+            </ul>
+            <div style="padding-left: 43%;"></div>
+        </div>
+        <div class="card-body" style="border-style: ridge;border-radius: 19px;filter: contrast(56%);">
+            <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+                <table class="table table-hover table-sm my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th style="width: 80px"></th>
+                            <th style="text-align: center;">Book name</th>
+                            <th style="text-align: center;">Price</th>
+                            <th style="text-align: center;">Quantity</th>
+                            <th style="text-align: center;">Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OrderDetails)
+                        {
+                            <tr>
+                                <td style="text-align: center"><img src="~/Image/@item.Book.UrlImage" style="width: 70px;height: 80px;"></td>
+                                <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@item.Book.BookName</td>
+                                <td style="color: rgb(0,0,0);font-weight: bold;text-align: center;">$ @item.Book.Price</td>
+                                <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@item.Quantity</td>
+                                <td style="color: rgb(0,0,0);font-weight: bold;text-align: center;">$ @item.AmountPrice</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td class="text-end" colspan="4" style="font-size: 30px;padding: 0px;font-weight: bold;margin-right: 0px;color: rgb(0,0,0);">Total:</td>
+                            <td style="padding: 0px;color: rgb(0,0,0);font-weight: bold;text-align: center;margin-top: 0px;font-size: 30px;">$ @Model.TotalPrice</td>
+                        </tr>
+                        <tr></tr>
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

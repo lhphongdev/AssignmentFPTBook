@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AssignmentFPTBook.Models.Order>
+
+@{
+    ViewBag.Title = "OrderHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1 class="text-center" style="margin-top: 5%;text-align: center;font-size: 32px;">
+    Order History <br />
+    @Html.ActionLink("Home Page", "Index", "Home", null, new { @class = "btn btn-primary" })
+</h1>
+
+@*<ul class="list-group" style="margin-right: 15%;margin-left: 15%;margin-bottom: 2%;">
+        <li class="list-group-item"><span><b>Name:</b> <span style="font-size:23px">@Model.Account.Fullname</span></span></li>
+        <li class="list-group-item"><span><b>Delivery address:</b> <span style="font-size:23px">@Model.Address</span></span></li>
+        <li class="list-group-item"><span><b>Phone number:</b> <span style="font-size:23px">@Model.Phone</span></span></li>
+        <li class="list-group-item"><span><b>Order date:</b> <span style="font-size:23px">@Model.OrderDate</span></span></li>
+    </ul>*@
+
+<div class="table-responsive text-center" style="margin-right: 15%;margin-left: 15%;">
+    <table class="table table-striped table-hover">
+        <thead>
+
+            <tr>
+                <th style="background: #e8b7b7;">Order ID</th>
+                <th class="text-center" style="background: #d9d3d3;">Order date</th>
+                <th class="text-center" style="background: #ef9b9b;">Total price</th>
+                <th style="background: #e7bcbc;">Details</th>
+                @*<th style="background: #c8aeae;">Total price</th>*@
+            </tr>
+
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center">@item.OrderID</td>
+                    <td class="text-center">@item.OrderDate<br></td>
+                    <td class="text-center">@item.TotalPrice</td>
+                    <td>@Html.ActionLink(" ", "OrderDetail", "ShoppingCart", new { id = item.OrderID }, new { @class = "fas fa-info-circle", @style = "font-size: 20px;color: rgb(1,1,1);" })</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

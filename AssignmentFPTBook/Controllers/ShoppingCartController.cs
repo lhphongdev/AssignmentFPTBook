@@ -82,12 +82,6 @@ namespace AssignmentFPTBook.Controllers
             return PartialView("BagCart");
         }
 
-
-        public ActionResult CheckoutSuccess()
-        {
-            return View();
-        }
-
         public ActionResult Checkout(FormCollection form)
         {
             try
@@ -108,11 +102,15 @@ namespace AssignmentFPTBook.Controllers
                     orderDetail.BookID = item._shopping_product.BookID;
                     orderDetail.Quantity = item._shopping_quantity;
                     orderDetail.AmountPrice = item._shopping_product.Price * item._shopping_quantity;
+
                     _db.OrderDetails.Add(orderDetail);
+
+
                 }
+
                 _db.SaveChanges();
                 cart.ClearCart();
-                return RedirectToAction("CheckoutSuccess", "ShoppingCart");
+                return RedirectToAction("CheckoutSuccess", "ShoppingCart", new { id = _order.OrderID });
             }
             catch
             {
@@ -121,5 +119,60 @@ namespace AssignmentFPTBook.Controllers
         }
 
 
+        public ActionResult CheckoutSuccess(int? id)
+        {
+            if (Session["Username"] != null)
+            {
+                var order = _db.Orders.Find(id);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                if (order == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(order);
+            }
+            return View("ErrorCart");
+        }
+
+
+        public ActionResult OrderHistory(string id)
+        {
+            if (Session["Username"] != null)
+            {
+                var orderHis = _db.Orders.ToList().Where(s => s.Username == id);
+
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                if (orderHis == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(orderHis);
+            }
+            return View("ErrorCart");
+        }
+
+        public ActionResult OrderDetail(int? id)
+        {
+            if (Session["Username"] != null)
+            {
+                var order = _db.Orders.Find(id);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                if (order == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(order);
+            }
+            return View("ErrorCart");
+        }
     }
 }
