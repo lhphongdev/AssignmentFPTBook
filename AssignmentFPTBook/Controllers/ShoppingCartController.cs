@@ -103,6 +103,12 @@ namespace AssignmentFPTBook.Controllers
                     orderDetail.Quantity = item._shopping_quantity;
                     orderDetail.AmountPrice = item._shopping_product.Price * item._shopping_quantity;
 
+                    var pro = _db.Books.SingleOrDefault(s => s.BookID == orderDetail.BookID);
+
+                    pro.Quantity -= orderDetail.Quantity;
+                    _db.Books.Attach(pro);
+                    _db.Entry(pro).Property(a => a.Quantity).IsModified = true;
+
                     _db.OrderDetails.Add(orderDetail);
 
 
