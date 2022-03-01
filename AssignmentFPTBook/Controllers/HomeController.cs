@@ -22,16 +22,27 @@ namespace AssignmentFPTBook.Controllers
             return View(books);
         }
 
-        //public ActionResult CategoryView(string id)
-        //{
-        //    var books = db.Books.ToList().FirstOrDefault(a => a.CategoryID == id);
-        //    return View(books);
-        //}
+        public ActionResult CategoryView(string id)
+        {
+            var books = db.Books.ToList().Where(a => a.CategoryID == id);
+            return View(books);
+        }
 
-        //public ActionResult AuthorView(string id)
-        //{
-        //    var books = db.Books.ToList().Find(a => a.AuthorID == id);
-        //    return View(books);
-        //}
+        public ActionResult AuthorView(string id)
+        {
+            var books = db.Books.ToList().Where(a => a.AuthorID == id);
+            return View(books);
+        }
+
+        public ActionResult Search(string Search)
+        {
+            ViewBag.Search = Search;
+            var books = db.Books.ToList().Where(s => s.BookName.ToUpper().Contains(Search.ToUpper()) ||
+                 s.Author.AuthorName.ToUpper().Contains(Search.ToUpper()) ||
+                 s.Category.CategoryName.ToUpper().Contains(Search.ToUpper()));
+
+            return View(books);
+
+        }
     }
 }

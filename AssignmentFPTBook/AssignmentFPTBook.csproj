@@ -221,6 +221,7 @@
     <Content Include="img\cart button.jpg" />
     <Content Include="img\FPT Books %281%29.gif" />
     <Content Include="img\logo.png" />
+    <Content Include="img\search.png" />
     <Content Include="Scripts\agency.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -322,11 +323,13 @@
     <Content Include="Views\Home\AuthorView.cshtml" />
     <Content Include="Views\ShoppingCart\ShowToCart.cshtml" />
     <Content Include="Views\ShoppingCart\BagCart.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\img\Books\" />
     <Folder Include="Image\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

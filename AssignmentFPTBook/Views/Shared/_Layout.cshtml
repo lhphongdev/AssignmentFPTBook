@@ -80,23 +80,35 @@
                             <a class="dropdown-item" href="@Url.Action("CategoryView","Home", new {id = "Ca08"})">Romance</a>
                             <a class="dropdown-item" href="@Url.Action("CategoryView","Home", new {id = "Ca09"})">Action and Adventure</a>
                             <a class="dropdown-item" href="@Url.Action("CategoryView","Home", new {id = "Ca10"})">Horror</a>
-
-
                         </div>
                     </li>
 
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" data-bss-hover-animate="pulse" href="#">Author</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="@Url.Action("Category","Home")"> Author 1</a>
-                            <a class="dropdown-item" href="@Url.Action("Category","Home")"> Author 2</a>
-                            <a class="dropdown-item" href="@Url.Action("Category","Home")"> Author 3</a>
+                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au01"})">Author 1</a>
+                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au02"})">Author 2</a>
+                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au03"})">Author 3</a>
+                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au04"})">Author 4</a>
+                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au05"})">Author 5</a>
+                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au06"})">Author 6</a>
+                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au07"})">Author 7</a>
+                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au08"})">Author 8</a>
+                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au09"})">Author 9</a>
+                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au10"})">Author 10</a>
                         </div>
 
                     </li>
                 </ul>
 
-                <input type="search" placeholder="  Search...">
+                @using (Html.BeginForm("Search", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+                {
+                    @Html.TextBox("Search", "", new { placeholder = "  Search..." })
+
+                    <button type="submit" style="background-color: none; border: none; margin-left: -42px; "><img src="~/img/search.png" style="height: 25px; width: 25px;" /></button>
+                }
+
+
 
                 <ul class="navbar-nav">
                     @if (Session["Username"] != null)

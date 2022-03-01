@@ -1,14 +1,9 @@
-﻿
-@model AssignmentFPTBook.Models.Cart
-
+﻿@model AssignmentFPTBook.Models.Cart
 
 @{
-    ViewBag.Title = "ShowCart";
+    ViewBag.Title = " Shopping Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-
 
 @if (Model != null)
 {
@@ -72,14 +67,9 @@
                 <tr>
                     <td><a href="#Checkout" class="btn btn-success">Checkout</a></td>
                 </tr>
-
             </tbody>
         </table>
-
-
     </div>
-
-
 
     <section class="register-photo" style="margin-top: -35px; background-image:none" id="Checkout">
         <div class="form-container">

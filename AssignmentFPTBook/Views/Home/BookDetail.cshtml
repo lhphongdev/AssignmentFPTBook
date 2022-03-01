@@ -1,7 +1,7 @@
 ﻿@model AssignmentFPTBook.Models.Book
 
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = @Model.BookName;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -22,7 +22,10 @@
                             <li>Category: @Model.Category.CategoryName</li>
                             <li class="text-break">Description: @Model.DetailDesc</li>
                         </ul>
-                        <h4 style="margin-left: 3%;">Price:&nbsp;<strong style="font-size: 35px;">@Model.Price $</strong></h4><button class="btn btn-success" type="button" style="margin-left: 6%;margin-top: 3%;width: 163.562px;height: 44px;"><i class="fas fa-shopping-cart"></i>&nbsp; &nbsp;Add to cart</button>
+                        <h4 style="margin-left: 3%;">Price:&nbsp;<strong style="font-size: 35px;">@Model.Price $</strong></h4>
+
+
+                        @Html.ActionLink("Add to cart", "AddtoCart", "ShoppingCart", new { id = Model.BookID }, new { @class = "btn btn-success fas fa-shopping-cart", @style = "margin-left: 6%;margin-top: 3%;width: 150px;height: 30px;" })
                     </div>
 
                 </div>
