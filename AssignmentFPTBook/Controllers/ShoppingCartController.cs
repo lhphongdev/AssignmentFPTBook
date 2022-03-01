@@ -26,12 +26,17 @@ namespace AssignmentFPTBook.Controllers
 
         public ActionResult AddtoCart(string id)
         {
-            var pro = _db.Books.SingleOrDefault(s => s.BookID == id);
-            if (pro != null)
+            if (Session["Username"] != null)
             {
-                GetCart().Add(pro);
+                var pro = _db.Books.SingleOrDefault(s => s.BookID == id);
+                if (pro != null)
+                {
+                    GetCart().Add(pro);
+                }
+                return RedirectToAction("ShowToCart", "ShoppingCart");
             }
-            return RedirectToAction("ShowToCart", "ShoppingCart");
+
+            return View("ErrorCart");
         }
 
         public ActionResult UpdateQuantity(FormCollection form)
@@ -52,12 +57,16 @@ namespace AssignmentFPTBook.Controllers
 
         public ActionResult ShowToCart()
         {
-            if (Session["Cart"] == null)
+            if (Session["Username"] != null)
             {
-                Response.Write("<script>alert('Cart is empty');window.location='/'</script>");
+                if (Session["Cart"] == null)
+                {
+                    Response.Write("<script>alert('Cart is empty');window.location='/'</script>");
+                }
+                Cart cart = Session["Cart"] as Cart;
+                return View(cart);
             }
-            Cart cart = Session["Cart"] as Cart;
-            return View(cart);
+            return View("ErrorCart");
         }
 
         public PartialViewResult BagCart()
@@ -72,6 +81,45 @@ namespace AssignmentFPTBook.Controllers
 
             return PartialView("BagCart");
         }
+
+
+        public ActionResult CheckoutSuccess()
+        {
+            return View();
+        }
+
+        public ActionResult Checkout(FormCollection form)
+        {
+            try
+            {
+                Cart cart = Session["Cart"] as Cart;
+                Order _order = new Order();
+                _order.OrderDate = DateTime.Now;
+                _order.Username = form["cUsername"];
+                _order.Address = form["cAddress"];
+                _order.Phone = form["cPhone"];
+                _order.TotalPrice = Convert.ToInt32(form["cTotalPrice"]);
+                _db.Orders.Add(_order);
+
+                foreach (var item in cart.Items)
+                {
+                    OrderDetail orderDetail = new OrderDetail();
+                    orderDetail.OrderID = _order.OrderID;
+                    orderDetail.BookID = item._shopping_product.BookID;
+                    orderDetail.Quantity = item._shopping_quantity;
+                    orderDetail.AmountPrice = item._shopping_product.Price * item._shopping_quantity;
+                    _db.OrderDetails.Add(orderDetail);
+                }
+                _db.SaveChanges();
+                cart.ClearCart();
+                return RedirectToAction("CheckoutSuccess", "ShoppingCart");
+            }
+            catch
+            {
+                return Content("Error checkout, Check information again");
+            }
+        }
+
 
     }
 }

@@ -13,12 +13,12 @@
     </script>
 }
 
-@if (ViewBag.Null != null)
+@if (ViewBag.LoginCart != null)
 {
     <script type="text/javascript">
     window.onload = function () {
-        alert("@ViewBag.Null");
-        window.location = "/";
+        alert("@ViewBag.LoginCart");
+        window.location = "/Account/SignIn";
     };
     </script>
 }
