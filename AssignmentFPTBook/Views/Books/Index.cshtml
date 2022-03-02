@@ -43,7 +43,7 @@
                                 <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@Html.DisplayFor(modelItem => item.BookID)</td>
                                 <td style="text-align: center; color: rgb(0,0,0); font-weight: bold; text-overflow: ellipsis; white-space: nowrap; overflow: hidden">@Html.DisplayFor(modelItem => item.BookName)</td>
                                 <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@Html.DisplayFor(modelItem => item.Quantity)</td>
-                                <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@Html.DisplayFor(modelItem => item.Price)</td>
+                                <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">$ @Html.DisplayFor(modelItem => item.Price)</td>
                                 <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">
                                     <div>
                                         <img src="~/Image/@item.UrlImage" style="width: 80px;" loading="eager" width="80px" height="100px" />
