@@ -18,7 +18,7 @@
                     </a>
                     <div class="portfolio-caption">
                         <p class="text-muted" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">@item.BookName</p>
-                        <h5>@item.Price $</h5>
+                        <h5>$ @item.Price</h5>
                         <a href="@Url.Action("AddtoCart","ShoppingCart", new {id = item.BookID})"><img data-bss-hover-animate="rubberBand" src="~/img/cart button.jpg" height="20%" width="80%" /></a>
                     </div>
                 </div>

@@ -39,7 +39,7 @@
                 <tr>
                     <td class="text-center">@item.OrderID</td>
                     <td class="text-center">@item.OrderDate<br></td>
-                    <td class="text-center">@item.TotalPrice</td>
+                    <td class="text-center">$ @item.TotalPrice</td>
                     <td>@Html.ActionLink(" ", "OrderDetail", "ShoppingCart", new { id = item.OrderID }, new { @class = "fas fa-info-circle", @style = "font-size: 20px;color: rgb(1,1,1);" })</td>
                 </tr>
             }

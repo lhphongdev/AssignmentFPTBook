@@ -7,7 +7,7 @@
 
 
 <h1 class="text-center" style="margin-top: 5%;text-align: center;font-size: 32px;">
-    Success <br />
+    Order successful <br />
 
     @Html.ActionLink("Home Page", "Index", "Home", null, new { @class = "btn btn-success" })
 </h1>
@@ -37,14 +37,14 @@
                 <tr>
                     <td><img style="width: 70px;height: 80px;" src="~/Image/@item.Book.UrlImage"></td>
                     <td class="text-center">@item.Book.BookName<br></td>
-                    <td class="text-center">@item.Book.Price</td>
+                    <td class="text-center">$ @item.Book.Price</td>
                     <td style="width: 108.6px;">@item.Quantity</td>
-                    <td>@item.AmountPrice</td>
+                    <td>$ @item.AmountPrice</td>
                 </tr>
             }
             <tr>
                 <td colspan="4" style="font-size: 26px;text-align: right;font-weight: bold;background: #f1e3e3;">Total:</td>
-                <td colspan="1" style="font-weight: bold;font-size: 23px;">@Model.TotalPrice</td>
+                <td colspan="1" style="font-weight: bold;font-size: 23px;">$ @Model.TotalPrice</td>
             </tr>
         </tbody>
     </table>
