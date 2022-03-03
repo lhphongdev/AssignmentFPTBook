@@ -1,6 +1,6 @@
 ﻿@model AssignmentFPTBook.Models.Order
 @{
-    ViewBag.Title = "CheckoutSuccess";
+    ViewBag.Title = "Order Success";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,8 +9,14 @@
 <h1 class="text-center" style="margin-top: 5%;text-align: center;font-size: 32px;">
     Order successful <br />
 
-    @Html.ActionLink("Home Page", "Index", "Home", null, new { @class = "btn btn-success" })
+
 </h1>
+<h5 class="text-center" style="text-align: center;">
+    Thank you for trusting and choosing us.
+    Your order will be delivered as soon as possible.<br />
+    @Html.ActionLink("Home Page", "Index", "Home", null, new { @class = "btn btn-success" })
+</h5>
+
 
 <ul class="list-group" style="margin-right: 15%;margin-left: 15%;margin-bottom: 2%;">
     <li class="list-group-item"><span><b>Name:</b> <span style="font-size:23px">@Model.Account.Fullname</span></span></li>
