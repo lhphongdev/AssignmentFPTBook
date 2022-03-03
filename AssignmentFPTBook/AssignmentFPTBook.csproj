@@ -146,7 +146,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helper\HtmlExtensions.cs" />
     <Compile Include="Migrations\202202240405525_InitialRun.cs" />
     <Compile Include="Migrations\202202240405525_InitialRun.designer.cs">
       <DependentUpon>202202240405525_InitialRun.cs</DependentUpon>
@@ -321,7 +320,6 @@
     <Content Include="Views\AdminAccount\Delete.cshtml" />
     <Content Include="Views\Home\BookDetail.cshtml" />
     <Content Include="Views\Home\CategoryView.cshtml" />
-    <Content Include="Views\Home\AuthorView.cshtml" />
     <Content Include="Views\ShoppingCart\ShowToCart.cshtml" />
     <Content Include="Views\ShoppingCart\BagCart.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />

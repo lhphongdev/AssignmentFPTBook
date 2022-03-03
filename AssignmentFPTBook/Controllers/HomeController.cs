@@ -28,12 +28,6 @@ namespace AssignmentFPTBook.Controllers
             return View(books);
         }
 
-        public ActionResult AuthorView(string id)
-        {
-            var books = db.Books.ToList().Where(a => a.AuthorID == id);
-            return View(books);
-        }
-
         public ActionResult Search(string Search)
         {
             ViewBag.Search = Search;

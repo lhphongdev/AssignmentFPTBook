@@ -19,7 +19,7 @@
 
 <section class="register-photo" style="margin-top: 55px; background-image: url('https://cutepics.net/wp-content/uploads/2020/08/Collection-of-super-beautiful-4K-landscape-wallpapers-for-windows-background-themes-1-1024x576.jpg') ">
     <div class="form-container">
-        @using (Html.BeginForm("SendFeedback", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @style = "background: rgb(235,224,224); height:500px" }))
+        @using (Html.BeginForm("SendFeedback", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @style = "background: rgb(235,224,224); height:500px;border-radius:50px" }))
         {
             @Html.AntiForgeryToken()
 
@@ -28,7 +28,7 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 <strong>@Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "form-label", @style = "font-size:20px;" })</strong>
-                @Html.TextBoxFor(u => u.Username, new { @class = "form-control form-control-lg", @Value = Session["Username"], @readonly = "", @style = "background: rgb(198,199,201);" })
+                @Html.TextBoxFor(u => u.Username, new { @class = "form-control form-control-lg", @Value = Session["Username"], @readonly = "", @style = "background: rgb(198,199,201);border-radius:20px" })
                 @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
             </div>
 
@@ -43,13 +43,13 @@
             <div class="form-group">
                 <strong>@Html.LabelFor(model => model.ContentFeedback, htmlAttributes: new { @class = "form-label", @style = "font-size:20px" })</strong>
 
-                @Html.TextAreaFor(u => u.ContentFeedback, new { @class = "form-control form-control-lg", @placeholder = "How do you feel about our service?", @required = "", @style = "margin-bottom: 5px;background: rgb(237,240,245);color: rgb(0,0,0);height:200px" })
+                @Html.TextAreaFor(u => u.ContentFeedback, new { @class = "form-control form-control-lg", @placeholder = "How do you feel about our service?", @required = "", @style = "margin-bottom: 5px;background: rgb(237,240,245);color: rgb(0,0,0);height:200px;border-radius:20px" })
                 @Html.ValidationMessageFor(model => model.ContentFeedback, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
-                <input class="btn btn-primary" type="submit" value="Send" style="width: 109.2375px;margin-right: 13px;background: rgb(158,20,170);" />
-                <a class="btn btn-primary" role="button" style="width: 109.2375px;background: rgb(251,0,52);" href="@Url.Action("Index", "Home")">Cancel</a>
+                <input class="btn btn-primary" type="submit" value="Send" style="width: 109.2375px; margin-right: 13px; background: rgb(158,20,170); border-radius: 25px" />
+                <a class="btn btn-primary" role="button" style="width: 109.2375px; background: rgb(251,0,52); border-radius: 25px" href="@Url.Action("Index", "Home")">Cancel</a>
             </div>
         }
     </div>

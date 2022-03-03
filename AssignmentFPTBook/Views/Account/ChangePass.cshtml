@@ -21,7 +21,7 @@
 <section class="register-photo" style="margin-top: 55px; background-image: url('https://i.imgur.com/3RZzmca.jpg'); background-size: 100% ">
     <div class="form-container">
 
-        @using (Html.BeginForm("ChangePass", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @style = "background: rgb(235,224,224);" }))
+        @using (Html.BeginForm("ChangePass", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @style = "background: #EFE1C1;border-radius:50px" }))
         {
 
             @Html.AntiForgeryToken()
@@ -31,7 +31,7 @@
 
 
             <div class="form-group">
-                @Html.PasswordFor(u => u.CurrentPassword, new { @class = "form-control form-control-lg", @placeholder = "Enter current password", @autofocus = "", @required = "", @style = "margin-bottom: 5px;background: rgb(237,240,245);color: rgb(0,0,0);" })
+                @Html.PasswordFor(u => u.CurrentPassword, new { @class = "form-control form-control-lg", @placeholder = "Enter current password", @autofocus = "", @required = "", @style = "margin-bottom: 25px;background: rgb(237,240,245);color: rgb(0,0,0);border-radius:20px;box-shadow: 15px 8px 15px #9A968A" })
                 @if (ViewBag.Error != null)
                 {
                     <p class="text-danger">@ViewBag.Error</p>
@@ -40,12 +40,12 @@
 
 
             <div class="form-group">
-                @Html.PasswordFor(u => u.NewPassword, new { @class = "form-control form-control-lg", @placeholder = "Enter new password", @required = "", @style = "margin-bottom: 5px;background: rgb(237,240,245);color: rgb(0,0,0);" })
+                @Html.PasswordFor(u => u.NewPassword, new { @class = "form-control form-control-lg", @placeholder = "Enter new password", @required = "", @style = "margin-bottom: 25px;background: rgb(237,240,245);color: rgb(0,0,0);border-radius:20px;box-shadow: 15px 8px 15px #9A968A" })
                 @Html.ValidationMessageFor(model => model.NewPassword, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
-                @Html.PasswordFor(u => u.ConfirmNewPassword, new { @class = "form-control form-control-lg", @placeholder = "Confirm new password", @required = "", @style = "margin-bottom: 5px;background: rgb(237,240,245);color: rgb(0,0,0);" })
+                @Html.PasswordFor(u => u.ConfirmNewPassword, new { @class = "form-control form-control-lg", @placeholder = "Confirm new password", @required = "", @style = "margin-bottom: 5px;background: rgb(237,240,245);color: rgb(0,0,0);border-radius:20px;box-shadow: 15px 8px 15px #9A968A" })
                 @if (ViewBag.Confirm != null)
                 {
                     <p class="text-danger">@ViewBag.Confirm</p>
@@ -57,9 +57,9 @@
 
 
 
-            <input class="btn btn-primary" type="submit" value="Update" style="width: 109.2375px;margin-right: 13px;background: rgb(158,20,170);" />
+            <input class="btn btn-primary" type="submit" value="Update" style="width: 109.2375px; margin-right: 13px; background: rgb(158,20,170); border-radius: 25px; box-shadow: 10px 5px 15px #000 " />
 
-            <a class="btn btn-primary" role="button" style="width: 109.2375px;background: rgb(251,0,52);" href="@Url.Action("UpdateAccount", "Account")">Cancel</a>
+            <a class="btn btn-primary" role="button" style="width: 109.2375px; background: rgb(251,0,52); border-radius: 25px; box-shadow: 10px 5px 15px #000 " href="@Url.Action("UpdateAccount", "Account")">Cancel</a>
 
         }
     </div>

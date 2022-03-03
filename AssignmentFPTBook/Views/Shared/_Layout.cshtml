@@ -83,29 +83,14 @@
                         </div>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" data-bss-hover-animate="pulse" href="#">Author</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au01"})">Author 1</a>
-                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au02"})">Author 2</a>
-                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au03"})">Author 3</a>
-                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au04"})">Author 4</a>
-                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au05"})">Author 5</a>
-                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au06"})">Author 6</a>
-                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au07"})">Author 7</a>
-                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au08"})">Author 8</a>
-                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au09"})">Author 9</a>
-                            <a class="dropdown-item" href="@Url.Action("AuthorView","Home", new {id = "Au10"})">Author 10</a>
-                        </div>
 
-                    </li>
                 </ul>
 
                 @using (Html.BeginForm("Search", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
                 {
-                    @Html.TextBox("Search", "", new { placeholder = "  Search..." })
+                    @Html.TextBox("Search", "", new { placeholder = "  Search...", @style = "border-radius:20px" });
 
-                    <button type="submit" style="background-color: none; border: none; margin-left: -42px; "><img src="~/img/search.png" style="height: 25px; width: 25px;" /></button>
+                    <button type="submit" style="background-color: #fff; border: none; margin-left: -42px; border-radius: 100%"><img src="~/img/search.png" style="height: 25px; width: 25px; border-radius: 100%" /></button>
                 }
 
 
@@ -192,9 +177,9 @@
             outline: none;
             background-color: black;
             color: white;
-            cursor:context-menu;
+            cursor:pointer;
             padding: 7px;
-            border-radius: 10px;
+            border-radius: 25px;
             font-size: 30px; ">
         🔝
     </button>

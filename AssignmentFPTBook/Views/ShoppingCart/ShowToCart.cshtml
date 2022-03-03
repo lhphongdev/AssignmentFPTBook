@@ -50,7 +50,7 @@
                                 </div>
 
                                 <div style="width: 100%;">
-                                    <input type="submit" class="btn btn-primary" style="margin-top: 10px;background: rgb(149,129,61);" value="Update" />
+                                    <input type="submit" class="btn btn-outline-primary" style="margin-top: 10px; background: rgb(149,129,61); border-radius: 25px;" value="Update" />
                                 </div>
                             }
                         </td>
@@ -65,36 +65,36 @@
                     <td style="font-weight: bold;font-size: 23px;">@Model.TotalPrice() $</td>
                 </tr>
                 <tr>
-                    <td colspan="5" align="left">@Html.ActionLink("  Continue shopping", "Index", "Home", null, new { @class = "btn btn-danger fas fa-arrow-left", @style = "margin-left:5%; padding:10px" })</td>
-                    <td align="center"><a href="#Checkout" class="btn btn-success">Checkout</a></td>
+                    <td colspan="5" align="left">@Html.ActionLink("  Continue shopping", "Index", "Home", null, new { @class = "btn btn-outline-danger fas fa-arrow-left", @style = "margin-left:5%; padding:10px;border-radius: 25px;" })</td>
+                    <td align="center"><a href="#Checkout" class="btn btn-success" style="border-radius: 25px;">Checkout</a></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <section class="register-photo" style="margin-top: -35px; background-image:none" id="Checkout">
+    <section class="register-photo" style=" background-image: none; background-color:#fff" id="Checkout">
         <div class="form-container">
 
-            @using (Html.BeginForm("Checkout", "ShoppingCart", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @style = "background: rgb(212, 240, 209);" }))
+            @using (Html.BeginForm("Checkout", "ShoppingCart", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @style = "background: #F4DAD5; border:none; border-radius:50px;border:groove;box-shadow: 25px 15px 15px lightblue" }))
             {
                 <h2 class="text-center">Checkout information</h2>
-                <p style="color:red; margin-top:-5%">(*)<i> Required</i></p>
+                <p style="color:red; margin-top:-5%;"><b>(*)</b><i> Required</i></p>
                 <div class="mb-3">
                     <label class="form-label" style="color: rgb(7,7,7);font-weight: bold;">Delivery address <span style="color:red">(*)</span></label>
-                    <input class="form-control" type="text" style="background: rgb(243, 250, 242); margin-bottom: 14px; color: rgb(0,0,0); " name="cAddress" placeholder="Enter Delivery address" required />
+                    <input class="form-control" type="text" style="background: rgb(243, 250, 242); margin-bottom: 14px; color: rgb(0,0,0); border-radius: 15px; box-shadow: 10px 5px 25px " name="cAddress" placeholder="Enter Delivery address" required />
 
                     <label class="form-label" style="color: rgb(7,7,7);font-weight: bold;">Phone number <span style="color:red">(*)</span></label>
-                    <input class="form-control" type="text" style="background: rgb(243, 250, 242); color: rgb(0,0,0); " name="cPhone" placeholder=" Enter Phone number" value="@Session["Phone"]" required>
+                    <input class="form-control" type="text" style="background: rgb(243, 250, 242); color: rgb(0,0,0); border-radius: 15px; box-shadow: 10px 5px 25px" name="cPhone" placeholder=" Enter Phone number" value="@Session["Phone"]" required>
 
-                    <label class="form-label" style="color: rgb(7,7,7);font-weight: bold;">Username</label>
-                    <input class="form-control" type="text" style="background: rgb(203, 222, 202); margin-bottom: 14px; color: rgb(0,0,0); " name="cUsername" value="@Session["Username"]" readonly>
+                    <label class="form-label" style="color: rgb(7,7,7);font-weight: bold; margin-top:15px">Username</label>
+                    <input class="form-control" type="text" style="background: rgb(203, 222, 202); margin-bottom: 14px; color: rgb(0,0,0); border-radius: 15px;" name="cUsername" value="@Session["Username"]" readonly>
 
                     <label class="form-label" style="color: rgb(7,7,7);font-weight: bold;">Total price ($)</label>
-                    <input class="form-control" type="text" style="background: rgb(203, 222, 202); color: rgb(0,0,0); " name="cTotalPrice" value="@Model.TotalPrice()" readonly="">
+                    <input class="form-control" type="text" style="background: rgb(203, 222, 202); color: rgb(0,0,0); border-radius: 15px; " name="cTotalPrice" value="@Model.TotalPrice()" readonly="">
                 </div>
                 <div>
-                    <button class="btn btn-primary" type="submit" style="margin-top: 9px;width: 120px;background: rgb(32,129,48);">Order</button>
-                    <a class="btn btn-primary" role="button" style="margin-top: 9px;margin-left: 21px;width: 120px;background: rgb(248,18,4);" href="@Url.Action("Index","Home")">Cancel</a>
+                    <button class="btn btn-primary" type="submit" style="margin-top: 9px; width: 120px; background: rgb(32,129,48); border-radius: 25px; box-shadow: 10px 5px 15px #000">Checkout</button>
+                    <a class="btn btn-primary" role="button" style="margin-top: 9px; margin-left: 21px; width: 120px; background: rgb(248,18,4); border-radius: 25px; box-shadow: 10px 5px 15px #000" href="@Url.Action("Index","Home")">Cancel</a>
                 </div>
             }
 

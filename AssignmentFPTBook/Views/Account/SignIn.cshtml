@@ -8,7 +8,7 @@
 
 <section class="login-dark" style="height: 752px;">
 
-    @using (Html.BeginForm("SignIn", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "filter: brightness(127%) contrast(132%) grayscale(44%) hue-rotate(35deg) saturate(122%) sepia(31%);background: rgb(30, 40, 51);" }))
+    @using (Html.BeginForm("SignIn", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "filter: brightness(127%) contrast(132%) grayscale(44%) hue-rotate(35deg) saturate(122%) sepia(31%);background: rgb(30, 40, 51);border-radius:50px" }))
     {
         <div class="illustration">
             <i class="icon ion-android-person"></i>
@@ -29,10 +29,10 @@
 
         <div class="form-group">
             <div class="mb-3">
-                <input type="submit" value="Log in" class="btn btn-primary d-block w-100" />
+                <input type="submit" value="Log in" class="btn btn-primary d-block w-100" style="border-radius: 25px" />
 
             </div>
-            <i>@Html.ActionLink("Do you have account? Sign up", "Register", "Home", routeValues: null, htmlAttributes: new { @class = "forgot", @style = "color: rgb(161,196,231);" })</i>
+            <i>@Html.ActionLink("Do you have account? Sign up", "SignUp", "Account", routeValues: null, htmlAttributes: new { @class = "forgot", @style = "color: rgb(161,196,231);" })</i>
         </div>
 
 
