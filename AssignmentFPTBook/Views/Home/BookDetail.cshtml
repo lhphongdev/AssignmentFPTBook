@@ -15,12 +15,12 @@
                     <div class="col-md-12 col-lg-5">
                         <img class="img-fluid pulse animated infinite" src="~/Image/@Model.UrlImage" style="box-shadow: 30px 15px 35px #9D9684">
                     </div>
-                    <div class="col bounce animated">
+                    <div class="col bounce animated" style="margin-left:2%">
                         <h3 class="name" style="font-size: 30px; text-align: left; margin-left: 3%; word-break: break-all;">@Model.BookName</h3>
                         <ul style="font-size: 20px;margin-left: 7px;">
                             <li>Author: @Model.Author.AuthorName</li>
                             <li>Category: @Model.Category.CategoryName</li>
-                            <li class="text-break">Description: @Model.DetailDesc</li>
+                            <li class="text-break" style="text-align:justify">Description: @Model.DetailDesc</li>
                         </ul>
                         <h4 style="margin-left: 3%;">Price:&nbsp;<strong style="font-size: 35px;">@Model.Price $</strong></h4>
 
