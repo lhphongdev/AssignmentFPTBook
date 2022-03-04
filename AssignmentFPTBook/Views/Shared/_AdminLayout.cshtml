@@ -50,9 +50,10 @@
 
                         <a class="nav-link" href="@Url.Action("Index", "Orders")"><i class="fas fa-book-reader"></i><span>Orders Management</span></a>
 
-
-                        <a class="nav-link" href="@Url.Action("ViewUserList", "AdminAccount")"><i class="fas fa-user-alt"></i><span>User Management</span></a>
-
+                        @if (Session["Admin"].Equals("admin"))
+                        {
+                            <a class="nav-link" href="@Url.Action("ViewUserList", "AdminAccount")"><i class="fas fa-user-alt"></i><span>User Management</span></a>
+                        }
 
                         @Html.ActionLink("  Profile", "UpdateInfor", "AdminAccount", null, new { @class = "far fa-user-circle nav-link", @style = "margin-top:50%;font-size:18px;font-weight:bold" })
                         <a class="nav-link" href="@Url.Action("Logout","Account")"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>

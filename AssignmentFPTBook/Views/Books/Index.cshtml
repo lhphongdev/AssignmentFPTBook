@@ -28,8 +28,8 @@
                             <th style="text-align: center;">@Html.DisplayNameFor(model => model.Quantity)</th>
                             <th style="text-align: center;">@Html.DisplayNameFor(model => model.Price)</th>
                             <th style="text-align: center;">@Html.DisplayNameFor(model => model.UrlImage)</th>
-                            <th style="text-align: center;">@Html.DisplayNameFor(model => model.CategoryID)</th>
-                            <th style="text-align: center;">@Html.DisplayNameFor(model => model.AuthorID)</th>
+                            <th style="text-align: center;">@Html.DisplayNameFor(model => model.Category.CategoryName)</th>
+                            <th style="text-align: center;">@Html.DisplayNameFor(model => model.Author.AuthorName)</th>
 
                             <th style="text-align: center;">Detail</th>
                             <th style="text-align: center;">Edit</th>
@@ -49,8 +49,8 @@
                                         <img src="~/Image/@item.UrlImage" style="width: 80px;" loading="eager" width="80px" height="100px" />
                                     </div>
                                 </td>
-                                <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@Html.DisplayFor(modelItem => item.CategoryID)</td>
-                                <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@Html.DisplayFor(modelItem => item.AuthorID)</td>
+                                <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@Html.DisplayFor(modelItem => item.Category.CategoryName)</td>
+                                <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@Html.DisplayFor(modelItem => item.Author.AuthorName)</td>
 
                                 <td style="text-align: center;">
                                     <div>@Html.ActionLink(" ", "Details", new { id = item.BookID }, new { @class = "fas fa-info-circle", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
