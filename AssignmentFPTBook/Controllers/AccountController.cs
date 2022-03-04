@@ -86,6 +86,7 @@ namespace AssignmentFPTBook.Controllers
                     {
                         Session["Username"] = data.FirstOrDefault().Username;
                         Session["Phone"] = data.FirstOrDefault().Phone;
+                        Session["Address"] = data.FirstOrDefault().Address;
                         return RedirectToAction("Index", "Home");
                     }
                     else

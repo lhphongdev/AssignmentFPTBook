@@ -96,7 +96,7 @@ namespace AssignmentFPTBook.Controllers
 
         public ActionResult ViewUserList()
         {
-            if (Session["Admin"] != null)
+            if (Session["Admin"] != null && Session["Admin"].Equals("admin"))
             {
                 return View(db.Accounts.ToList().OrderByDescending(a => a.State));
             }

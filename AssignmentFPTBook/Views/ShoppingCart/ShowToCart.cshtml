@@ -81,7 +81,7 @@
                 <p style="color:red; margin-top:-5%;"><b>(*)</b><i> Required</i></p>
                 <div class="mb-3">
                     <label class="form-label" style="color: rgb(7,7,7);font-weight: bold;">Delivery address <span style="color:red">(*)</span></label>
-                    <input class="form-control" type="text" style="background: rgb(243, 250, 242); margin-bottom: 14px; color: rgb(0,0,0); border-radius: 15px; box-shadow: 10px 5px 25px " name="cAddress" placeholder="Enter Delivery address" required />
+                    <input class="form-control" type="text" style="background: rgb(243, 250, 242); margin-bottom: 14px; color: rgb(0,0,0); border-radius: 15px; box-shadow: 10px 5px 25px " name="cAddress" placeholder="Enter Delivery address" value="@Session["Address"]" required />
 
                     <label class="form-label" style="color: rgb(7,7,7);font-weight: bold;">Phone number <span style="color:red">(*)</span></label>
                     <input class="form-control" type="text" style="background: rgb(243, 250, 242); color: rgb(0,0,0); border-radius: 15px; box-shadow: 10px 5px 25px" name="cPhone" placeholder=" Enter Phone number" value="@Session["Phone"]" required>
