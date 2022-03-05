@@ -16,6 +16,11 @@ namespace AssignmentFPTBook.Controllers
             return View(books);
         }
 
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
+
         public ActionResult BookDetail(string id)
         {
             var books = db.Books.ToList().Find(a => a.BookID == id);

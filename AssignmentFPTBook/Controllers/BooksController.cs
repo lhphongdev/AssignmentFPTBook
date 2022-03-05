@@ -84,6 +84,7 @@ namespace AssignmentFPTBook.Controllers
             }
             ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", book.CategoryID);
+
             return View(book);
         }
 
@@ -97,7 +98,9 @@ namespace AssignmentFPTBook.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
                 Book book = db.Books.Find(id);
+
                 Session["imgPath"] = "~/Image/" + book.UrlImage;
+
                 if (book == null)
                 {
                     return HttpNotFound();

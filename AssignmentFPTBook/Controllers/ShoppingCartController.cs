@@ -110,8 +110,6 @@ namespace AssignmentFPTBook.Controllers
                     _db.Entry(pro).Property(a => a.Quantity).IsModified = true;
 
                     _db.OrderDetails.Add(orderDetail);
-
-
                 }
 
                 _db.SaveChanges();

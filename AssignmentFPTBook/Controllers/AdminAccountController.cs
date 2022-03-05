@@ -73,11 +73,12 @@ namespace AssignmentFPTBook.Controllers
             if (objAccount == null)
             {
                 ViewBag.aError = "Current Password is incorrect";
-                return View();
+                return View("UpdateInfor");
             }
             if (account.NewPassword != account.ConfirmNewPassword)
             {
-                ViewBag.aConfirm = "The new password and confirmation new password do not match.";
+                ViewBag.aError = "The new password and confirmation new password do not match.";
+                return View("UpdateInfor");
             }
 
             else
