@@ -53,13 +53,13 @@
                                 <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@Html.DisplayFor(modelItem => item.Author.AuthorName)</td>
 
                                 <td style="text-align: center;">
-                                    <div>@Html.ActionLink(" ", "Details", new { id = item.BookID }, new { @class = "fas fa-info-circle", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
+                                    <div>@Html.ActionLink(" ", "Details", new { id = item.BookID }, new { @class = "fas fa-info-circle", @style = "font-size: 20px;color: rgb(1,1,1);text-decoration:none" })</div>
                                 </td>
                                 <td style="text-align: center;">
-                                    <div>@Html.ActionLink(" ", "Edit", new { id = item.BookID }, new { @class = "fas fa-edit", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
+                                    <div>@Html.ActionLink(" ", "Edit", new { id = item.BookID }, new { @class = "fas fa-edit", @style = "font-size: 20px;color: rgb(1,1,1);text-decoration:none" })</div>
                                 </td>
                                 <td style="text-align: center;">
-                                    <div>@Html.ActionLink(" ", "Delete", new { id = item.BookID }, new { @class = "fas fa-trash", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
+                                    <div>@Html.ActionLink(" ", "Delete", new { id = item.BookID }, new { @class = "fas fa-trash", @style = "font-size: 20px;color: rgb(1,1,1);text-decoration:none" })</div>
                                 </td>
                             </tr>
                         }

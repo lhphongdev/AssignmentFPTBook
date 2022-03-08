@@ -163,6 +163,7 @@ namespace AssignmentFPTBook.Controllers
                 ViewBag.Error = "Current Password is incorrect";
                 return View();
             }
+
             if (account.NewPassword != account.ConfirmNewPassword)
             {
                 ViewBag.Confirm = "The new password and confirmation new password do not match.";

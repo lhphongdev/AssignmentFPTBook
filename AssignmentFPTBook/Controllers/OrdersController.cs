@@ -20,7 +20,7 @@ namespace AssignmentFPTBook.Controllers
             if (Session["Admin"] != null)
             {
                 var orders = db.Orders.Include(o => o.Account);
-                return View(orders.ToList());
+                return View(orders.ToList().OrderByDescending(o => o.OrderDate));
             }
             return View("Error");
         }

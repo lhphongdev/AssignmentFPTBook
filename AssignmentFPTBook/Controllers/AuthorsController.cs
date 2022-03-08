@@ -19,7 +19,7 @@ namespace AssignmentFPTBook.Controllers
         {
             if (Session["Admin"] != null)
             {
-                return View(db.Authors.ToList().OrderBy(a => a.AuthorID));
+                return View(db.Authors.ToList());
             }
             return View("Error");
 
