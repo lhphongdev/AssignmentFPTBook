@@ -22,7 +22,6 @@ namespace AssignmentFPTBook.Controllers
                 return View(db.Authors.ToList());
             }
             return View("Error");
-
         }
 
         // GET: Authors/Details/AuthorID
@@ -42,8 +41,6 @@ namespace AssignmentFPTBook.Controllers
                 return View(author);
             }
             return View("Error");
-
-
         }
 
         // GET: Authors/Create
@@ -88,7 +85,6 @@ namespace AssignmentFPTBook.Controllers
                 return View(author);
             }
             return View("Error");
-
         }
 
         // POST: Authors/Edit/AuthorID

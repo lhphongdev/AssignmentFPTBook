@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
     <link href="~/Content/Registration-Form-with-Photo.css" rel="stylesheet" />
-
     <link href="~/Content/Login-Form-Dark.css" rel="stylesheet" />
     <link href="~/Content/Footer-Dark.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -87,12 +86,7 @@
 
                 </ul>
 
-                @using (Html.BeginForm("Search", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
-                {
-                    @Html.TextBox("Search", "", new { placeholder = "  Search...", @style = "border-radius:20px" });
 
-                    <button type="submit" style="background-color: #fff; border: none; margin-left: -42px; border-radius: 100%"><img src="~/img/search.png" style="height: 25px; width: 25px; border-radius: 100%" /></button>
-                }
 
 
 
@@ -114,6 +108,13 @@
                         <li class="nav-item" data-bss-hover-animate="tada">@Html.ActionLink("Sign up", "SignUp", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
                     }
                 </ul>
+
+                @using (Html.BeginForm("Search", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+                {
+                    @Html.TextBox("Search", "", new { placeholder = "Search...", @style = "border-radius:10px 20px 20px 10px; padding-left:10px" });
+
+                    <button type="submit" style="background-color: #fff; border: none; margin-left: -42px; border-radius: 100%"><img src="~/img/search.png" style="height: 25px; width: 25px; border-radius: 100%" /></button>
+                }
 
             </div>
         </div>

@@ -78,7 +78,6 @@ namespace AssignmentFPTBook.Controllers
                 }
                 else
                 {
-                    ViewBag.Error = "............";
                     return View();
                 }
             }
@@ -204,3 +203,5 @@ namespace AssignmentFPTBook.Controllers
         }
     }
 }
+
+
