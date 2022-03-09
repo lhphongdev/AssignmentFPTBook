@@ -12,7 +12,7 @@ namespace AssignmentFPTBook.Controllers
         private FPTBookStoreDbContext db = new FPTBookStoreDbContext();
         public ActionResult Index()
         {
-            var books = db.Books.ToList();
+            var books = db.Books.ToList().OrderByDescending(q => q.Quantity);
             return View(books);
         }
 

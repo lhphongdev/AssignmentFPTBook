@@ -20,12 +20,19 @@
                         <ul style="font-size: 20px;margin-left: 7px;">
                             <li>Author: @Model.Author.AuthorName</li>
                             <li>Category: @Model.Category.CategoryName</li>
+                            <li>Number of books left in stock: <b>@Model.Quantity</b></li>
                             <li class="text-break" style="text-align:justify">Description: @Model.DetailDesc</li>
                         </ul>
                         <h4 style="margin-left: 3%;">Price:&nbsp;<strong style="font-size: 35px;">@Model.Price $</strong></h4>
 
-
-                        @Html.ActionLink("Add to cart", "AddtoCart", "ShoppingCart", new { id = Model.BookID }, new { @class = "btn btn-success fas fa-shopping-cart", @style = "margin-left: 6%;margin-top: 3%;width: 150px;height: 30px;" })
+                        @if (Model.Quantity != 0)
+                        {
+                            @Html.ActionLink("Add to cart", "AddtoCart", "ShoppingCart", new { id = Model.BookID }, new { @class = "btn btn-success fas fa-shopping-cart", @style = "margin-left: 6%;margin-top: 3%;width: 150px;height: 30px;" })
+                        }
+                        else
+                        {
+                            <h1 style="color:red;margin-left:20px">Out of stock</h1>
+                        }
                     </div>
 
                 </div>

@@ -49,7 +49,15 @@
                     <div class="portfolio-caption">
                         <p class="text-muted" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">@item.BookName</p>
                         <h6>$ @item.Price</h6>
-                        <a href="@Url.Action("AddtoCart","ShoppingCart", new {id = item.BookID})"><img data-bss-hover-animate="rubberBand" src="~/img/cart button.jpg" height="20%" width="80%" /></a>
+                        @if (item.Quantity != 0)
+                        {
+                            <a href="@Url.Action("AddtoCart","ShoppingCart", new {id = item.BookID})"><img data-bss-hover-animate="rubberBand" src="~/img/cart button.jpg" height="20%" width="80%" /></a>
+                        }
+                        else
+                        {
+                            <h6 style="color:red">Out of stock</h6>
+                        }
+
                     </div>
                 </div>
             }

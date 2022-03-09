@@ -5,8 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
 @if (Model != null)
 {
+
     <h1 class="text-center" style="margin-top: 5%;text-align: center;font-size: 32px;">Cart</h1>
 
     <div class="table-responsive text-center" style="margin-top: 30px;margin-bottom: 21px;">
@@ -47,6 +50,8 @@
                                 <div style="width: 100%">
                                     <input type="hidden" value="@item._shopping_product.BookID" name="ID_Product" />
                                     <input type="number" style="width: 90px;" value="@item._shopping_quantity" name="Quantity" min="1" />
+
+
                                 </div>
 
                                 <div style="width: 100%;">

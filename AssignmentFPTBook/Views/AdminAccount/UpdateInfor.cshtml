@@ -56,7 +56,7 @@
                                             <strong>
                                                 @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label" })
                                             </strong>
-                                            @Html.TextBoxFor(u => u.Email, new { @class = "form-control", @placeholder = "Enter email address", @required = "" })
+                                            @Html.TextBoxFor(u => u.Email, new { @class = "form-control", @placeholder = "Enter email address", @required = "", @style = "color:black" })
                                             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -68,7 +68,7 @@
                                             <strong>
                                                 @Html.LabelFor(model => model.Fullname, htmlAttributes: new { @class = "form-label" })
                                             </strong>
-                                            @Html.TextBoxFor(u => u.Fullname, new { @class = "form-control", @placeholder = "Enter fullname", @required = "" })
+                                            @Html.TextBoxFor(u => u.Fullname, new { @class = "form-control", @placeholder = "Enter fullname", @required = "", @style = "color:black" })
                                             @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -77,7 +77,7 @@
                                             <strong>
                                                 @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "form-label" })
                                             </strong>
-                                            @Html.TextBoxFor(u => u.Phone, new { @class = "form-control", @placeholder = "Enter phone number", @required = "" })
+                                            @Html.TextBoxFor(u => u.Phone, new { @class = "form-control", @placeholder = "Enter phone number", @required = "", @style = "color:black" })
                                             @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@
                                             <strong>
                                                 @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "form-label" })
                                             </strong>
-                                            @Html.TextAreaFor(u => u.Address, new { @class = "form-control", @placeholder = "Enter address", @required = "" })
+                                            @Html.TextAreaFor(u => u.Address, new { @class = "form-control", @placeholder = "Enter address", @required = "", @style = "color:black" })
                                             @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
 
                                         </div>
