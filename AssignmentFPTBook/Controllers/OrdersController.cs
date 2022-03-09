@@ -44,6 +44,22 @@ namespace AssignmentFPTBook.Controllers
             return View("Error");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details(Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Orders.Attach(order);
+                db.Entry(order).Property(e => e.OrderStatus).IsModified = true;
+
+                _ = db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            return Content("<script>alert('Quantity is larger than our stock');window.location.replace('/');</script>");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

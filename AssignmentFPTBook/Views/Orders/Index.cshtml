@@ -20,6 +20,7 @@
                             <th style="width: 93.4px;text-align: center;">Order ID</th>
                             <th style="text-align: center;">Order date</th>
                             <th style="text-align: center;">Total Price</th>
+                            <th style="text-align: center;">Order status</th>
                             <th style="text-align: center;">Details</th>
                         </tr>
                     </thead>
@@ -30,6 +31,7 @@
                                 <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;"> @Html.DisplayFor(modelItem => item.OrderID)</td>
                                 <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@Html.DisplayFor(modelItem => item.OrderDate)</td>
                                 <td style="color: rgb(0,0,0);font-weight: bold;text-align: center; ">@Html.DisplayFor(modelItem => item.TotalPrice)</td>
+                                <td style="color: rgb(0,0,0);font-weight: bold;text-align: center; ">@Html.DisplayFor(modelItem => item.OrderStatus)</td>
 
                                 <td style="color: rgb(0,0,0);font-weight: bold;text-align: center;font-size: 24px;">
                                     <div>

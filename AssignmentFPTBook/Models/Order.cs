@@ -16,21 +16,25 @@ namespace AssignmentFPTBook.Models
 
         public int OrderID { get; set; }
 
-        [Required]
+
         [StringLength(50)]
         public string Username { get; set; }
 
-        [Required]
+
         [StringLength(13)]
         public string Phone { get; set; }
 
-        [Required]
+
         [StringLength(100)]
         public string Address { get; set; }
 
         public DateTime OrderDate { get; set; }
 
         public int TotalPrice { get; set; }
+
+
+        [StringLength(20)]
+        public string OrderStatus { get; set; }
 
         public virtual Account Account { get; set; }
 

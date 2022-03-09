@@ -27,6 +27,7 @@
                 <th style="background: #e8b7b7;">Order ID</th>
                 <th class="text-center" style="background: #d9d3d3;">Order date</th>
                 <th class="text-center" style="background: #ef9b9b;">Total price</th>
+                <th class="text-center" style="background: #F2E8CB;">Status</th>
                 <th style="background: #e7bcbc;">Details</th>
                 @*<th style="background: #c8aeae;">Total price</th>*@
             </tr>
@@ -40,6 +41,7 @@
                     <td class="text-center">@item.OrderID</td>
                     <td class="text-center">@item.OrderDate<br></td>
                     <td class="text-center">$ @item.TotalPrice</td>
+                    <td class="text-center">@item.OrderStatus</td>
                     <td>@Html.ActionLink(" ", "OrderDetail", "ShoppingCart", new { id = item.OrderID }, new { @class = "fas fa-info-circle", @style = "font-size: 20px;color: rgb(1,1,1);text-decoration:none" })</td>
                 </tr>
             }
