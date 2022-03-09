@@ -10,14 +10,43 @@
 
     @Html.ActionLink("Back", "OrderHistory", "ShoppingCart", new { id = Session["Username"] }, new { @class = "btn btn-success", @style = "border-radius:20px;width:150px" })
 </h1>
+@using (Html.BeginForm("Details", "Orders", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <ul class="list-group" style="margin-right: 15%;margin-left: 15%;margin-bottom: 2%;">
+        @Html.HiddenFor(a => a.OrderID)
+        <li class="list-group-item"><span><b>Name:</b> <span style="font-size:23px">@Html.DisplayFor(a => a.Account.Fullname)</span></span></li>
+        <li class="list-group-item"><span><b>Delivery address:</b> <span style="font-size:23px">@Html.DisplayFor(a => a.Address)</span></span></li>
+        <li class="list-group-item"><span><b>Phone number:</b> <span style="font-size:23px">@Html.DisplayFor(a => a.Phone)</span></span></li>
+        <li class="list-group-item"><span><b>Order date:</b> <span style="font-size:23px">@Html.DisplayFor(a => a.OrderDate)</span></span></li>
+        <li class="list-group-item"><span><b>Order status:</b> <span style="font-size:23px">@Html.DisplayFor(a => a.OrderStatus)</span></span></li>
+        <li class="list-group-item">
+            @if (Model.OrderStatus.Equals("Processing") || Model.OrderStatus.Equals("Confirmed"))
+            {
+                @Html.RadioButtonFor(model => model.OrderStatus, "Canceled", new { @checked = true, @style = "margin-left: 50%" })
+                <input type="submit" value="Cancel this order" class="btn btn-danger" style="margin-left:-11%;width:220px;font-weight:bold;color:white;font-size:20px" onclick="return confirm('Are you sure to cancel this order?')" />
+                @Html.ValidationMessageFor(model => model.OrderStatus, "", new { @class = "text-danger" })
+            }
+            else if (Model.OrderStatus.Equals("Delivering"))
+            {
+                @Html.RadioButtonFor(model => model.OrderStatus, "Received", new { @checked = true, @style = "margin-left: 50%" })
 
-<ul class="list-group" style="margin-right: 15%;margin-left: 15%;margin-bottom: 2%;">
-    <li class="list-group-item"><span><b>Name:</b> <span style="font-size:23px">@Model.Account.Fullname</span></span></li>
-    <li class="list-group-item"><span><b>Delivery address:</b> <span style="font-size:23px">@Model.Address</span></span></li>
-    <li class="list-group-item"><span><b>Phone number:</b> <span style="font-size:23px">@Model.Phone</span></span></li>
-    <li class="list-group-item"><span><b>Order date:</b> <span style="font-size:23px">@Model.OrderDate</span></span></li>
-    <li class="list-group-item"><span><b>Order status:</b> <span style="font-size:23px">@Model.OrderStatus</span></span></li>
-</ul>
+                <input type="submit" value="Received" class="btn btn-success" style="margin-left:-11%;width:190px;font-weight:bold;color:white;font-size:20px" onclick="return confirm('Are you sure?')" />
+                @Html.ValidationMessageFor(model => model.OrderStatus, "", new { @class = "text-danger" })
+            }
+            else if (Model.OrderStatus.Equals("Canceled"))
+            {
+                <span style="margin-left:5%;font-size:20px">
+                    What problem are you having? Please &nbsp; <a href="https://www.facebook.com/richard.luu.19022" target="_blank" style="color:blue;font-weight:bold"> click here </a> &nbsp; to contact us for best support
+                </span>
+            }
+            else
+            {
+                <span style="margin-left:30%;font-size:20px;font-weight:bold">Thank you for your purchase from us.</span>
+            }
+        </li>
+    </ul>
+}
 <div class="table-responsive text-center" style="margin-right: 15%;margin-left: 15%;">
     <table class="table table-hover">
         <thead>

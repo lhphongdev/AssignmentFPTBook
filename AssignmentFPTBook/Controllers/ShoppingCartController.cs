@@ -105,6 +105,7 @@ namespace AssignmentFPTBook.Controllers
                 _order.Address = form["cAddress"];
                 _order.Phone = form["cPhone"];
                 _order.TotalPrice = Convert.ToInt32(form["cTotalPrice"]);
+                _order.OrderStatus = "Processing";
                 if (_order.TotalPrice != 0)
                 {
                     _db.Orders.Add(_order);
@@ -174,7 +175,7 @@ namespace AssignmentFPTBook.Controllers
                 {
                     return HttpNotFound();
                 }
-                return View(orderHis);
+                return View(orderHis.ToList().OrderByDescending(o => o.OrderDate));
             }
             return View("ErrorCart");
         }

@@ -31,7 +31,15 @@
                                 <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;"> @Html.DisplayFor(modelItem => item.OrderID)</td>
                                 <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">@Html.DisplayFor(modelItem => item.OrderDate)</td>
                                 <td style="color: rgb(0,0,0);font-weight: bold;text-align: center; ">@Html.DisplayFor(modelItem => item.TotalPrice)</td>
-                                <td style="color: rgb(0,0,0);font-weight: bold;text-align: center; ">@Html.DisplayFor(modelItem => item.OrderStatus)</td>
+                                @if (item.OrderStatus != "Canceled")
+                                {
+                                    <td style="color: rgb(0,0,0);font-weight: bold;text-align: center; ">@Html.DisplayFor(modelItem => item.OrderStatus)</td>
+                                }
+                                else
+                                {
+                                    <td style="color: red;font-weight: bold;text-align: center; text-decoration:underline">(@Html.DisplayFor(modelItem => item.OrderStatus))</td>
+                                }
+
 
                                 <td style="color: rgb(0,0,0);font-weight: bold;text-align: center;font-size: 24px;">
                                     <div>

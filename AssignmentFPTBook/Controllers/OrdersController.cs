@@ -53,11 +53,17 @@ namespace AssignmentFPTBook.Controllers
                 db.Orders.Attach(order);
                 db.Entry(order).Property(e => e.OrderStatus).IsModified = true;
 
-                _ = db.SaveChanges();
-
-                return RedirectToAction("Index");
+                db.SaveChanges();
+                if (Session["Admin"] != null)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("OrderHistory", "ShoppingCart", new { id = Session["Username"] });
+                }
             }
-            return Content("<script>alert('Quantity is larger than our stock');window.location.replace('/');</script>");
+            return View();
         }
 
         protected override void Dispose(bool disposing)

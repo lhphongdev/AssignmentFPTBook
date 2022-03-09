@@ -23,7 +23,7 @@
                     <li class="list-group-item"><span><b>Order date:</b> <span style="font-size:23px">@Html.DisplayFor(a => a.OrderDate)</span></span></li>
                     <li class="list-group-item">
 
-                        <b>Order Status</b>
+                        <b>Order Status: </b>
                         @if (Model.OrderStatus.Equals("Processing"))
                         {
                             @Html.RadioButtonFor(model => model.OrderStatus, "Processing", new { @checked = true, @style = "margin-left: 5%" })
@@ -32,8 +32,10 @@
                             <span style="font-size: 19px;">Confirmed</span>
                             @Html.RadioButtonFor(model => model.OrderStatus, "Delivering", new { @style = "margin-left: 5%" })
                             <span style="font-size: 19px;">Delivering</span>
-                            @Html.RadioButtonFor(model => model.OrderStatus, "Delivered", new { @style = "margin-left: 5%" })
-                            <span style="font-size: 19px;">Delivered</span>
+
+                            <input type="submit" value="Update status" class="btn btn-success" style="margin-left:5%;width:180px;font-weight:bold;color:white;font-size:20px" />
+                            @Html.ValidationMessageFor(model => model.OrderStatus, "", new { @class = "text-danger" })
+
                         }
                         else if (Model.OrderStatus.Equals("Confirmed"))
                         {
@@ -43,8 +45,10 @@
                             <b style="font-size: 19px;">Confirmed</b>
                             @Html.RadioButtonFor(model => model.OrderStatus, "Delivering", new { @style = "margin-left: 5%" })
                             <span style="font-size: 19px;">Delivered</span>
-                            @Html.RadioButtonFor(model => model.OrderStatus, "Delivered", new { @style = "margin-left: 5%" })
-                            <span style="font-size: 19px;">Delivered</span>
+
+                            <input type="submit" value="Update status" class="btn btn-success" style="margin-left:5%;width:180px;font-weight:bold;color:white;font-size:20px" />
+                            @Html.ValidationMessageFor(model => model.OrderStatus, "", new { @class = "text-danger" })
+
                         }
 
                         else if (Model.OrderStatus.Equals("Delivering"))
@@ -55,23 +59,24 @@
                             <span style="font-size: 19px;">Confirmed</span>
                             @Html.RadioButtonFor(model => model.OrderStatus, "Delivering", new { @checked = true, @style = "margin-left: 5%" })
                             <b style="font-size: 19px;">Delivering</b>
-                            @Html.RadioButtonFor(model => model.OrderStatus, "Delivered", new { @style = "margin-left: 5%" })
-                            <span style="font-size: 19px;">Delivered</span>
+
+                            <input type="submit" value="Update status" class="btn btn-success" style="margin-left:5%;width:180px;font-weight:bold;color:white;font-size:20px" />
+                            @Html.ValidationMessageFor(model => model.OrderStatus, "", new { @class = "text-danger" })
+
                         }
 
+
+
+                        else if (Model.OrderStatus.Equals("Received"))
+                        {
+
+                            <span style="font-size: 19px;"><b><u>Received</u></b></span>
+
+                        }
                         else
                         {
-                            @Html.RadioButtonFor(model => model.OrderStatus, "Processing", new { @style = "margin-left: 5%" })
-                            <span style="font-size: 19px;">Processing</span>
-                            @Html.RadioButtonFor(model => model.OrderStatus, "Confirmed", new { @style = "margin-left: 5%" })
-                            <span style="font-size: 19px;">Confirmed</span>
-                            @Html.RadioButtonFor(model => model.OrderStatus, "Delivering", new { @checked = true, @style = "margin-left: 5%" })
-                            <span style="font-size: 19px;">Delivering</span>
-                            @Html.RadioButtonFor(model => model.OrderStatus, "Delivered", new { @checked = true, @style = "margin-left: 5%" })
-                            <b style="font-size: 19px;">Delivered</b>
+                            <span style="font-size: 19px; color:red"><b><u>Canceled</u></b></span>
                         }
-                        <input type="submit" value="Update status" class="btn btn-success" style="margin-left:5%;width:180px;font-weight:bold;color:white;font-size:20px" />
-                        @Html.ValidationMessageFor(model => model.OrderStatus, "", new { @class = "text-danger" })
 
                     </li>
                 </ul>
