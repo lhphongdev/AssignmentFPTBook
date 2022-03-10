@@ -26,17 +26,14 @@ namespace AssignmentFPTBook.Controllers
 
         public ActionResult AddtoCart(string id)
         {
-            if (Session["Username"] != null)
-            {
-                var pro = _db.Books.SingleOrDefault(s => s.BookID == id);
-                if (pro != null)
-                {
-                    GetCart().Add(pro);
-                }
-                return RedirectToAction("ShowToCart", "ShoppingCart");
-            }
 
-            return View("ErrorCart");
+            var pro = _db.Books.SingleOrDefault(s => s.BookID == id);
+            if (pro != null)
+            {
+                GetCart().Add(pro);
+            }
+            return RedirectToAction("ShowToCart", "ShoppingCart");
+
         }
 
         public ActionResult UpdateQuantity(FormCollection form)
@@ -55,7 +52,6 @@ namespace AssignmentFPTBook.Controllers
             else
             {
                 cart.Update_Quantity_Shopping(id_pro, quantity);
-
             }
             return RedirectToAction("ShowToCart", "ShoppingCart");
         }
@@ -69,16 +65,14 @@ namespace AssignmentFPTBook.Controllers
 
         public ActionResult ShowToCart()
         {
-            if (Session["Username"] != null)
+
+            if (Session["Cart"] == null)
             {
-                if (Session["Cart"] == null)
-                {
-                    Response.Write("<script>alert('Cart is empty');window.location='/'</script>");
-                }
-                Cart cart = Session["Cart"] as Cart;
-                return View(cart);
+                Response.Write("<script>alert('Cart is empty');window.location='/'</script>");
             }
-            return View("ErrorCart");
+            Cart cart = Session["Cart"] as Cart;
+            return View(cart);
+
         }
 
         public PartialViewResult BagCart()
@@ -98,42 +92,50 @@ namespace AssignmentFPTBook.Controllers
         {
             try
             {
-                Cart cart = Session["Cart"] as Cart;
-                Order _order = new Order();
-                _order.OrderDate = DateTime.Now;
-                _order.Username = form["cUsername"];
-                _order.Address = form["cAddress"];
-                _order.Phone = form["cPhone"];
-                _order.TotalPrice = Convert.ToInt32(form["cTotalPrice"]);
-                _order.OrderStatus = "Processing";
-                if (_order.TotalPrice != 0)
+                if (Session["Username"] == null)
                 {
-                    _db.Orders.Add(_order);
-
-                    foreach (var item in cart.Items)
-                    {
-                        OrderDetail orderDetail = new OrderDetail();
-                        orderDetail.OrderID = _order.OrderID;
-                        orderDetail.BookID = item._shopping_product.BookID;
-                        orderDetail.Quantity = item._shopping_quantity;
-                        orderDetail.AmountPrice = item._shopping_product.Price * item._shopping_quantity;
-
-                        var pro = _db.Books.SingleOrDefault(s => s.BookID == orderDetail.BookID);
-
-                        pro.Quantity -= orderDetail.Quantity;
-                        _db.Books.Attach(pro);
-                        _db.Entry(pro).Property(a => a.Quantity).IsModified = true;
-
-                        _db.OrderDetails.Add(orderDetail);
-                    }
-                    _db.SaveChanges();
-                    cart.ClearCart();
-                    return RedirectToAction("CheckoutSuccess", "ShoppingCart", new { id = _order.OrderID });
+                    return Content("<script>alert('Please log in before checkout');window.location.replace('/Account/SignIn');</script>");
                 }
                 else
                 {
-                    return Content("<script>alert('Please choose book before checkout');window.location.replace('/');</script>");
+                    Cart cart = Session["Cart"] as Cart;
+                    Order _order = new Order();
+                    _order.OrderDate = DateTime.Now;
+                    _order.Username = form["cUsername"];
+                    _order.Address = form["cAddress"];
+                    _order.Phone = form["cPhone"];
+                    _order.TotalPrice = Convert.ToInt32(form["cTotalPrice"]);
+                    _order.OrderStatus = "Processing";
+                    if (_order.TotalPrice != 0)
+                    {
+                        _db.Orders.Add(_order);
+
+                        foreach (var item in cart.Items)
+                        {
+                            OrderDetail orderDetail = new OrderDetail();
+                            orderDetail.OrderID = _order.OrderID;
+                            orderDetail.BookID = item._shopping_product.BookID;
+                            orderDetail.Quantity = item._shopping_quantity;
+                            orderDetail.AmountPrice = item._shopping_product.Price * item._shopping_quantity;
+
+                            var pro = _db.Books.SingleOrDefault(s => s.BookID == orderDetail.BookID);
+
+                            pro.Quantity -= orderDetail.Quantity;
+                            _db.Books.Attach(pro);
+                            _db.Entry(pro).Property(a => a.Quantity).IsModified = true;
+
+                            _db.OrderDetails.Add(orderDetail);
+                        }
+                        _db.SaveChanges();
+                        cart.ClearCart();
+                        return RedirectToAction("CheckoutSuccess", "ShoppingCart", new { id = _order.OrderID });
+                    }
+                    else
+                    {
+                        return Content("<script>alert('Please choose book before checkout');window.location.replace('/');</script>");
+                    }
                 }
+
             }
             catch
             {

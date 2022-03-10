@@ -35,7 +35,6 @@
 
                             <input type="submit" value="Update status" class="btn btn-success" style="margin-left:5%;width:180px;font-weight:bold;color:white;font-size:20px" />
                             @Html.ValidationMessageFor(model => model.OrderStatus, "", new { @class = "text-danger" })
-
                         }
                         else if (Model.OrderStatus.Equals("Confirmed"))
                         {
@@ -48,7 +47,6 @@
 
                             <input type="submit" value="Update status" class="btn btn-success" style="margin-left:5%;width:180px;font-weight:bold;color:white;font-size:20px" />
                             @Html.ValidationMessageFor(model => model.OrderStatus, "", new { @class = "text-danger" })
-
                         }
 
                         else if (Model.OrderStatus.Equals("Delivering"))
