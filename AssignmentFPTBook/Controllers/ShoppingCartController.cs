@@ -21,33 +21,29 @@ namespace AssignmentFPTBook.Controllers
                 Session["Cart"] = cart;
             }
             return cart;
-
         }
 
         public ActionResult AddtoCart(string id)
         {
-
             var pro = _db.Books.SingleOrDefault(s => s.BookID == id);
             if (pro != null)
             {
                 GetCart().Add(pro);
             }
             return RedirectToAction("ShowToCart", "ShoppingCart");
-
         }
 
         public ActionResult UpdateQuantity(FormCollection form)
         {
             Cart cart = Session["Cart"] as Cart;
             string id_pro = form["ID_Product"];
-
             int quantity = int.Parse(form["Quantity"]);
 
             Book qStock = _db.Books.FirstOrDefault(a => a.BookID == id_pro);
 
             if (quantity > qStock.Quantity)
             {
-                return Content("<script>alert('Quantity is larger than our stock');window.location.replace('/');</script>");
+                return Content("<script>alert('Quantity is larger than our stock');window.location.replace('/ShoppingCart/ShowToCart');</script>");
             }
             else
             {
@@ -65,14 +61,12 @@ namespace AssignmentFPTBook.Controllers
 
         public ActionResult ShowToCart()
         {
-
             if (Session["Cart"] == null)
             {
                 Response.Write("<script>alert('Cart is empty');window.location='/'</script>");
             }
             Cart cart = Session["Cart"] as Cart;
             return View(cart);
-
         }
 
         public PartialViewResult BagCart()
@@ -135,7 +129,6 @@ namespace AssignmentFPTBook.Controllers
                         return Content("<script>alert('Please choose book before checkout');window.location.replace('/');</script>");
                     }
                 }
-
             }
             catch
             {
@@ -177,7 +170,7 @@ namespace AssignmentFPTBook.Controllers
                 {
                     return HttpNotFound();
                 }
-                return View(orderHis.ToList().OrderByDescending(o => o.OrderDate));
+                return View(orderHis.ToList().OrderByDescending(o => o.OrderStatus));
             }
             return View("ErrorCart");
         }

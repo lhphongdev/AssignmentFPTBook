@@ -36,8 +36,6 @@ namespace AssignmentFPTBook.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-
-
         [NotMapped]
         [DataType(DataType.Password)]
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -56,8 +54,6 @@ namespace AssignmentFPTBook.Models
         [Display(Name = "Confirm New Password")]
         public string ConfirmNewPassword { get; set; }
 
-
-
         [Required]
         [StringLength(50)]
         [EmailAddress(ErrorMessage = "Invalid Email address")]
@@ -75,7 +71,6 @@ namespace AssignmentFPTBook.Models
 
         [Display(Name = "Role")]
         public int State { get; set; }
-
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feedback> Feedbacks { get; set; }

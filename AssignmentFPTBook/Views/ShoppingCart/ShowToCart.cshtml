@@ -86,18 +86,18 @@
                 <p style="color:red; margin-top:-5%;"><b>(*)</b><i> Required</i></p>
                 <div class="mb-3">
                     <label class="form-label" style="color: rgb(7,7,7);font-weight: bold;">Delivery address <span style="color:red">(*)</span></label>
-                    <input class="form-control" type="text" style="background: rgb(243, 250, 242); margin-bottom: 14px; color: rgb(0,0,0); border-radius: 15px; box-shadow: 10px 5px 25px " name="cAddress" placeholder="Enter Delivery address" value="@Session["Address"]" required />
+                    <input class="form-control" type="text" style="background: rgb(243, 250, 242); margin-bottom: 14px; color: rgb(0,0,0); border-radius: 15px; box-shadow: 5px 5px 5px " name="cAddress" placeholder="Enter Delivery address" value="@Session["Address"]" required />
 
-                    <label class="form-label" style="color: rgb(7,7,7);font-weight: bold;">Phone number <span style="color:red">(*)</span></label>
-                    <input class="form-control" type="text" style="background: rgb(243, 250, 242); color: rgb(0,0,0); border-radius: 15px; box-shadow: 10px 5px 25px" name="cPhone" placeholder=" Enter Phone number" value="@Session["Phone"]" required>
+                    <label class="form-label" style="color: rgb(7,7,7);font-weight: bold;margin-top:10px">Phone number <span style="color:red">(*)</span></label>
+                    <input class="form-control" type="text" style="background: rgb(243, 250, 242); color: rgb(0,0,0); border-radius: 15px; box-shadow: 5px 5px 5px" name="cPhone" placeholder=" Enter Phone number" value="@Session["Phone"]" required>
 
-                    <label class="form-label" style="color: rgb(7,7,7);font-weight: bold; margin-top:15px">Username</label>
-                    <input class="form-control" type="text" style="background: rgb(203, 222, 202); margin-bottom: 14px; color: rgb(0,0,0); border-radius: 15px;" name="cUsername" value="@Session["Username"]" readonly>
+                    @*<label class="form-label" style="color: rgb(7,7,7);font-weight: bold; margin-top:15px">Username</label>*@
+                    <input class="form-control" type="hidden" style="background: rgb(203, 222, 202); margin-bottom: 14px; color: rgb(0,0,0); border-radius: 15px;" name="cUsername" value="@Session["Username"]" readonly>
 
-                    <label class="form-label" style="color: rgb(7,7,7);font-weight: bold;">Total price ($)</label>
-                    <input class="form-control" type="text" style="background: rgb(203, 222, 202); color: rgb(0,0,0); border-radius: 15px; " name="cTotalPrice" value="@Model.TotalPrice()" readonly="">
+                    @*<label class="form-label" style="color: rgb(7,7,7); font-weight: bold; margin-top: 20px">Total price ($)</label>*@
+                    <input class="form-control" type="hidden" style="background: rgb(203, 222, 202); color: rgb(0,0,0); border-radius: 15px; " name="cTotalPrice" value="@Model.TotalPrice()" readonly="">
                 </div>
-                <div>
+                <div style="margin-top:6%">
                     <button class="btn btn-primary" type="submit" style="margin-top: 9px; width: 120px; background: rgb(32,129,48); border-radius: 25px; box-shadow: 10px 5px 15px #000">Checkout</button>
                     <a class="btn btn-primary" role="button" style="margin-top: 9px; margin-left: 21px; width: 120px; background: rgb(248,18,4); border-radius: 25px; box-shadow: 10px 5px 15px #000" href="@Url.Action("Index","Home")">Cancel</a>
                 </div>

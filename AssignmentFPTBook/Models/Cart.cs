@@ -49,7 +49,6 @@ namespace AssignmentFPTBook.Models
         public double TotalPrice()
         {
             var total = items.Sum(s => s._shopping_product.Price * s._shopping_quantity);
-
             return total;
         }
 

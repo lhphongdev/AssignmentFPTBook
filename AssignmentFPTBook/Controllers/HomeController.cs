@@ -41,7 +41,6 @@ namespace AssignmentFPTBook.Controllers
                  s.Category.CategoryName.ToUpper().Contains(Search.ToUpper()));
 
             return View(books);
-
         }
     }
 }

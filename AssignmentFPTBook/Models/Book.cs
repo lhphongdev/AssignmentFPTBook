@@ -42,8 +42,6 @@ namespace AssignmentFPTBook.Models
         [Display(Name = "Price")]
         public int Price { get; set; }
 
-
-
         [DataType(DataType.Upload)]
         [Display(Name = "Book Image")]
         public string UrlImage { get; set; }
@@ -57,7 +55,6 @@ namespace AssignmentFPTBook.Models
         [StringLength(500)]
         [Display(Name = "Detail Description")]
         public string DetailDesc { get; set; }
-
 
         public virtual Author Author { get; set; }
 

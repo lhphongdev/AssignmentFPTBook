@@ -215,6 +215,30 @@
     <Content Include="fonts\ionicons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\Cafe cung tony - 2 .png" />
+    <Content Include="Image\Cafe cung Tony.png" />
+    <Content Include="Image\Carl Sagan.png" />
+    <Content Include="Image\DNT.png" />
+    <Content Include="Image\Dracula.png" />
+    <Content Include="Image\gatsby.png" />
+    <Content Include="Image\Herman Melville.png" />
+    <Content Include="Image\James and the giant peach.png" />
+    <Content Include="Image\Jane Eyre.png" />
+    <Content Include="Image\Life of Pi.png" />
+    <Content Include="Image\lordofthefiles.png" />
+    <Content Include="Image\Luoc su van vat.png" />
+    <Content Include="Image\Moby Pick.png" />
+    <Content Include="Image\No-No Boy.png" />
+    <Content Include="Image\Online Gantt 2022032.png" />
+    <Content Include="Image\rings.png" />
+    <Content Include="Image\sherlockholmes.png" />
+    <Content Include="Image\The Alchemist.png" />
+    <Content Include="Image\The Catcher in the Rye.png" />
+    <Content Include="Image\The color Purple.png" />
+    <Content Include="Image\The forever war.png" />
+    <Content Include="Image\The Godfather.png" />
+    <Content Include="Image\To kill a mocking bird.png" />
+    <Content Include="Image\Zen the art of moto.png" />
     <Content Include="img\back2.jpg" />
     <Content Include="img\background.png" />
     <Content Include="img\bookLogo.png" />
@@ -334,7 +358,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\img\Books\" />
-    <Folder Include="Image\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>

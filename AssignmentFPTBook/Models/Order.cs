@@ -16,14 +16,11 @@ namespace AssignmentFPTBook.Models
 
         public int OrderID { get; set; }
 
-
         [StringLength(50)]
         public string Username { get; set; }
 
-
         [StringLength(13)]
         public string Phone { get; set; }
-
 
         [StringLength(100)]
         public string Address { get; set; }
@@ -31,7 +28,6 @@ namespace AssignmentFPTBook.Models
         public DateTime OrderDate { get; set; }
 
         public int TotalPrice { get; set; }
-
 
         [StringLength(20)]
         public string OrderStatus { get; set; }
